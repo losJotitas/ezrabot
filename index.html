@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EZRABOT - Asistente de Ventas Multi-Perfil & Infoproductos</title>
+  <title>EZRABOT - Asistente de Ventas Multi-Perfil & Evolución IA</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -162,17 +162,14 @@
             <div>
               <label class="block text-xs font-semibold text-slate-400 mb-1">Rubro o Sector Comercial (Categorías en Tendencia)</label>
               <select id="profRubro" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500">
-                <!-- INFOPRODUCTOS Y DIGITALES -->
-                <option value="ebooks">Venta de E-books / Libros Digitales</option>
                 <option value="recetas">Recetarios de Cocina / Repostería</option>
+                <option value="ebooks">Venta de E-books / Libros Digitales</option>
                 <option value="cursos">Educación / Cursos Digitales / Infoproductos</option>
                 <option value="afiliados">Marketing de Afiliados / Hotmart</option>
                 <option value="coaching">Coaching / Mentorías / Desarrollo Personal</option>
                 <option value="idiomas">Academias de Idiomas / Masterclasses</option>
                 <option value="fitness_digital">Planes de Fitness & Nutrición Online</option>
                 <option value="crypto_trading">Criptomonedas / Trading / Finanzas</option>
-                
-                <!-- COMERCIO FÍSICO Y SALUD -->
                 <option value="botica">Botica / Farmacia / Salud & Bienestar</option>
                 <option value="dental">Clínica Dental / Odontología</option>
                 <option value="comics">Tienda de Cómics, Manga & Coleccionables</option>
@@ -183,8 +180,6 @@
                 <option value="belleza">Salón de Belleza / Skincare / Cosmética</option>
                 <option value="bienes_raices">Bienes Raíces / Alquiler y Venta</option>
                 <option value="importacion">Importación / Dropshipping / Tecnología</option>
-                <option value="fotografia">Estudio Fotográfico / Producción Audiovisual</option>
-                <option value="moda">Moda / Calzado / Ropa Exclusiva</option>
               </select>
             </div>
             <div>
@@ -214,20 +209,70 @@
           </div>
         </div>
 
-        <!-- FILTRO Y REGISTRO DE DUDAS NO RESUELTAS -->
-        <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
-          <div class="flex items-center justify-between">
-            <div>
-              <span class="text-[10px] font-bold text-amber-400 uppercase tracking-widest">APRENDIZAJE CON IA EN VIVO</span>
-              <h3 class="text-base font-bold text-slate-200">Filtro y Registro de Dudas No Resueltas</h3>
+        <!-- SECCIÓN DE EVOLUCIÓN Y APRENDIZAJES DE INDECISIÓN -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          
+          <!-- FILTRO Y DUDAS NO RESUELTAS (2 COLS) -->
+          <div class="lg:col-span-2 p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <div>
+                <span class="text-[10px] font-bold text-amber-400 uppercase tracking-widest">FILTRO Y REGISTRO DE DUDAS NO RESUELTAS</span>
+                <h3 class="text-base font-bold text-slate-200">Preguntas e Indecisiones Detectadas</h3>
+              </div>
+              <div class="flex items-center gap-2">
+                <span id="resolvedBadge" class="text-xs bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-3 py-1 rounded-lg font-semibold flex items-center gap-1.5">
+                  <i class="fa-regular fa-circle-check"></i> Resueltas / Asimiladas (<span id="resolvedCount">12</span>)
+                </span>
+              </div>
             </div>
-            <span class="text-xs bg-amber-500/10 text-amber-400 border border-amber-500/30 px-2.5 py-1 rounded-full font-semibold">Pendientes de revisión</span>
-          </div>
-          <p class="text-xs text-slate-400">Preguntas inéditas de clientes recibidas vía WhatsApp, Messenger y llamadas de voz:</p>
+            <p class="text-xs text-slate-400">Preguntas inéditas de clientes recibidas vía WhatsApp, Messenger y llamadas de voz:</p>
 
-          <div id="unresolvedList" class="space-y-3">
-            <!-- Dinámico -->
+            <div id="unresolvedList" class="space-y-3">
+              <!-- Dinámico -->
+            </div>
           </div>
+
+          <!-- TARJETA CÓMO FUNCIONA LA EVOLUCIÓN (1 COL) -->
+          <div class="p-6 rounded-2xl bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 flex flex-col justify-between space-y-4">
+            <div class="space-y-3">
+              <div class="flex items-center gap-2 text-blue-400">
+                <i class="fa-regular fa-lightbulb text-xl"></i>
+                <h4 class="text-sm font-extrabold uppercase tracking-wide text-white">CÓMO FUNCIONA LA EVOLUCIÓN</h4>
+              </div>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Cada vez que un cliente pregunte algo no contemplado en tus documentos o catálogo, el asistente lo registrará automáticamente aquí.
+              </p>
+              <ul class="text-xs text-slate-400 space-y-2.5 pt-1">
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400 font-bold">•</span>
+                  <span>Al añadir la respuesta, se asimila en menos de <strong>60 segundos</strong> tanto para llamadas como para chat.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400 font-bold">•</span>
+                  <span>El asistente no vuelve a equivocarse ni a pedir derivación humana sobre esa duda.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-blue-400 font-bold">•</span>
+                  <span>Tono calibrado automáticamente para sonar natural y consistente.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="pt-4 border-t border-slate-800/80 space-y-3">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-bold text-slate-300">Tasa de resolución autónoma</span>
+                <span class="font-extrabold text-blue-400" id="ratePercent">94.2%</span>
+              </div>
+              <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                <div class="bg-blue-500 h-full rounded-full transition-all duration-500" style="width: 94.2%;"></div>
+              </div>
+              <div class="flex items-center gap-2 text-[11px] text-emerald-400 font-medium pt-1">
+                <i class="fa-solid fa-rotate text-xs animate-spin" style="animation-duration: 4s;"></i>
+                <span>Auto-calibración activa de tono y memoria</span>
+              </div>
+            </div>
+          </div>
+
         </div>
 
         <!-- ENTRENAMIENTO UNIFICADO: SUBIR INFORMACIÓN -->
@@ -424,7 +469,6 @@
   </div>
 
   <script>
-    // ESTADO DE LA APLICACIÓN CON RUBROS AMPLIADOS (TIPO HOTMART / INFOPRODUCTOS)
     let profiles = {
       "recetas-demo": {
         name: "Recetario MasterChef & Repostería Pro",
@@ -437,8 +481,10 @@
         messagingEnabled: true,
         voiceEnabled: true,
         paymentsEnabled: true,
+        resolvedCount: 12,
+        ratePercent: "94.2%",
         unresolved: [
-          "¿Tienen envíos a provincias en domingo y cuál es el recargo?",
+          "¿Tienen envíos a provincias específicas los domingos y cuál es el recargo?",
           "¿Cumplen pagos con tarjeta de crédito corporativa sin intereses en 4 docenas?",
           "¿Facilitan descuentos adicionales para compras al por mayor mayores a 10 unidades?"
         ],
@@ -447,7 +493,7 @@
       "ebooks-demo": {
         name: "Biblioteca Digital Best Sellers Global",
         rubro: "ebooks",
-        slogan: "Los mejores best sellers de desarrollo personal y finanzas en formato digital",
+        slogan: "Los mejores best sellers de desarrollo personal y finanzas",
         hours: "Atención automática 24/7",
         phone: "+51 912 345 678",
         catalog: "https://bit.ly/ebooks-digitales",
@@ -455,26 +501,12 @@
         messagingEnabled: true,
         voiceEnabled: true,
         paymentsEnabled: true,
+        resolvedCount: 8,
+        ratePercent: "91.5%",
         unresolved: [
           "¿Los libros digitales se pueden leer en Kindle y iPad sin restricciones?"
         ],
         files: ["Catalogo_Libros_2026.pdf"]
-      },
-      "botica-demo": {
-        name: "Farmacia & Botica San Martín",
-        rubro: "botica",
-        slogan: "Salud y medicamentos con envío inmediato 24/7",
-        hours: "Atención 24 Horas",
-        phone: "+51 999 888 777",
-        catalog: "https://bit.ly/botica-salud",
-        policies: "Envíos a domicilio en 30 minutos.",
-        messagingEnabled: true,
-        voiceEnabled: true,
-        paymentsEnabled: true,
-        unresolved: [
-          "¿Tienen pañales para adulto en talla L?"
-        ],
-        files: ["Medicamentos_Stock.xlsx"]
       }
     };
 
@@ -488,14 +520,14 @@
     });
 
     function loadProfilesFromStorage() {
-      const saved = localStorage.getItem("ezrabot_profiles_v2");
+      const saved = localStorage.getItem("ezrabot_profiles_v3");
       if (saved) {
         profiles = JSON.parse(saved);
       }
     }
 
     function saveProfilesToStorage() {
-      localStorage.setItem("ezrabot_profiles_v2", JSON.stringify(profiles));
+      localStorage.setItem("ezrabot_profiles_v3", JSON.stringify(profiles));
     }
 
     function renderProfileSelector() {
@@ -531,6 +563,9 @@
       document.getElementById("switchVoice").checked = p.voiceEnabled;
       document.getElementById("switchPayments").checked = p.paymentsEnabled;
 
+      document.getElementById("resolvedCount").textContent = p.resolvedCount || 12;
+      document.getElementById("ratePercent").textContent = p.ratePercent || "94.2%";
+
       renderUnresolvedQueries(p.unresolved);
       renderUploadedFiles(p.files);
     }
@@ -559,7 +594,7 @@
       const list = document.getElementById("unresolvedList");
       list.innerHTML = "";
       if (!queries || queries.length === 0) {
-        list.innerHTML = `<p class="text-xs text-slate-500 italic">No hay dudas pendientes registradas.</p>`;
+        list.innerHTML = `<p class="text-xs text-slate-500 italic">No hay dudas pendientes registradas. El asistente ha asimilado todo el catálogo.</p>`;
         return;
       }
       queries.forEach((q, idx) => {
@@ -567,8 +602,8 @@
         item.className = "p-3 rounded-xl bg-slate-950 border border-slate-800/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3";
         item.innerHTML = `
           <div class="text-xs text-slate-300 font-medium">"${q}"</div>
-          <button onclick="resolveQuery(${idx})" class="bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 border border-blue-500/30 text-[11px] font-semibold px-3 py-1.5 rounded-lg shrink-0">
-            Añadir respuesta oficial y entrenar asistente
+          <button onclick="resolveQuery(${idx})" class="bg-blue-600 hover:bg-blue-500 text-white text-[11px] font-semibold px-3 py-1.5 rounded-lg shrink-0 transition-all shadow-md shadow-blue-600/20">
+            <i class="fa-solid fa-brain mr-1"></i> Añadir respuesta oficial y entrenar asistente
           </button>
         `;
         list.appendChild(item);
@@ -576,12 +611,14 @@
     }
 
     function resolveQuery(idx) {
-      const ans = prompt("Escribe la respuesta oficial para entrenar al asistente:");
+      const ans = prompt("Escribe la respuesta oficial para asimilar en el asistente (tomará menos de 60s):");
       if (ans) {
-        profiles[currentProfileId].unresolved.splice(idx, 1);
+        const p = profiles[currentProfileId];
+        p.unresolved.splice(idx, 1);
+        p.resolvedCount = (p.resolvedCount || 12) + 1;
         saveProfilesToStorage();
-        renderUnresolvedQueries(profiles[currentProfileId].unresolved);
-        alert("¡Respuesta incorporada al núcleo del asistente!");
+        loadProfileData(currentProfileId);
+        alert("¡Respuesta asimilada con éxito! El asistente no volverá a equivocarse en esta consulta.");
       }
     }
 
@@ -592,7 +629,7 @@
         profiles[currentProfileId].files.push(fileName);
         saveProfilesToStorage();
         renderUploadedFiles(profiles[currentProfileId].files);
-        alert(`¡Archivo "${fileName}" cargado y entrenado con éxito!`);
+        alert(`¡Archivo "${fileName}" cargado y asimilado por la IA!`);
       }
     }
 
@@ -702,6 +739,8 @@
         messagingEnabled: true,
         voiceEnabled: true,
         paymentsEnabled: true,
+        resolvedCount: 0,
+        ratePercent: "100%",
         unresolved: [],
         files: []
       };
@@ -745,7 +784,7 @@
         <div class="bg-blue-600/10 border border-blue-500/20 text-slate-200 text-xs p-3 rounded-xl space-y-1">
           <div class="font-bold text-blue-400">¡Hola! Bienvenido a ${p.name}.</div>
           <div>${p.slogan}</div>
-          <div class="text-[10px] text-slate-400 pt-1">Prueba escribiendo cualquier consulta sobre precios, catálogo o pagos.</div>
+          <div class="text-[10px] text-slate-400 pt-1">Pregúntame sobre precios, horarios o dudas de compra. Mi base está calibrada en tiempo real.</div>
         </div>
       `;
     }
@@ -766,10 +805,10 @@
 
       setTimeout(() => {
         const p = profiles[currentProfileId];
-        let reply = `Gracias por escribir a ${p.name}. Puedes acceder a nuestro catálogo completo y enlaces de pago directo aquí: ${p.catalog || 'Consúltenos al ' + p.phone}.`;
+        let reply = `Gracias por escribir a ${p.name}. Para información oficial de este rubro (${p.rubro}), nuestro catálogo está disponible en: ${p.catalog || 'Contáctanos al ' + p.phone}.`;
         
         if (text.toLowerCase().includes("pago") || text.toLowerCase().includes("yape")) {
-          reply = `Aceptamos Yape, Plin y tarjetas de crédito de forma segura. ${p.policies}`;
+          reply = `Aceptamos Yape, Plin y tarjetas de crédito con pago seguro. ${p.policies}`;
         }
 
         msgBox.innerHTML += `

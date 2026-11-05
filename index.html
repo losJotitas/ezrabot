@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EZRABOT - Asistente de Ventas Multi-Perfil</title>
+  <title>EZRABOT - Asistente de Ventas Multi-Perfil & Infoproductos</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -51,7 +51,7 @@
       <div class="flex items-center gap-3">
         <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          En línea y respondiendo
+          En línea y vendiendo
         </div>
 
         <button onclick="toggleTestModal()" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs sm:text-sm px-4 py-2 rounded-lg flex items-center gap-2 shadow-lg shadow-blue-600/30 transition-all">
@@ -75,15 +75,15 @@
       <nav class="space-y-1">
         <button onclick="switchTab('profileTab')" id="nav-profileTab" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium bg-blue-600 text-white shadow-md shadow-blue-600/20 transition-all">
           <i class="fa-solid fa-user-gear w-5 text-center"></i>
-          <span>Perfil de Negocio</span>
+          <span>Creación de Perfiles</span>
         </button>
         <button onclick="switchTab('messagingTab')" id="nav-messagingTab" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:bg-slate-800/60 hover:text-slate-200 transition-all">
           <i class="fa-solid fa-comments w-5 text-center"></i>
-          <span>Asistente Mensajería</span>
+          <span>Asistente de mensajería</span>
         </button>
         <button onclick="switchTab('voiceTab')" id="nav-voiceTab" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:bg-slate-800/60 hover:text-slate-200 transition-all">
           <i class="fa-solid fa-phone-volume w-5 text-center"></i>
-          <span>Asistente Llamadas</span>
+          <span>Asistente de llamadas</span>
         </button>
         <button onclick="switchTab('paymentsTab')" id="nav-paymentsTab" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-400 hover:bg-slate-800/60 hover:text-slate-200 transition-all">
           <i class="fa-solid fa-wallet w-5 text-center"></i>
@@ -103,7 +103,7 @@
           <span class="text-slate-400">Base Sincronizada</span>
           <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
         </div>
-        <p class="text-slate-500 text-[11px]">Chat + Voz entrenados y listos para interactuar.</p>
+        <p class="text-slate-500 text-[11px]">Chat + Voz en Vivo optimizados.</p>
       </div>
     </aside>
 
@@ -113,18 +113,18 @@
       <!-- TAB 1: PERFIL DE NEGOCIO -->
       <section id="profileTab" class="space-y-6">
         <div>
-          <div class="text-xs font-bold text-blue-400 uppercase tracking-widest mb-1">Arquitectura de Negocios • Despliegue Instantáneo</div>
+          <div class="text-xs font-bold text-blue-400 uppercase tracking-widest mb-1">ARQUITECTURA DE NEGOCIOS • DESPLIEGUE INSTANTÁNEO</div>
           <h2 class="text-2xl font-extrabold text-white">Configura tu Perfil de Negocio</h2>
-          <p class="text-sm text-slate-400 mt-1">Nutre la base de conocimiento central. Tu asistente aprenderá productos, precios y políticas para responder por texto y voz.</p>
+          <p class="text-sm text-slate-400 mt-1">Crea o edita la identidad de tu empresa y nutre la base de conocimiento central. Tu asistente aprenderá tus productos, precios y políticas para responder con precisión inmediata tanto por mensajería de texto como en llamadas de voz en tiempo real.</p>
         </div>
 
-        <!-- ACCIONES RÁPIDAS -->
+        <!-- ACCIONES RÁPIDAS Y CANALES -->
         <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 flex flex-wrap items-center justify-between gap-4">
           <div class="flex items-center gap-3">
             <i class="fa-solid fa-sliders text-blue-400 text-xl"></i>
             <div>
-              <div class="text-sm font-semibold text-white">Estado de Canales Activos</div>
-              <div class="text-xs text-slate-400">Activa o desactiva módulos en tiempo real</div>
+              <div class="text-sm font-semibold text-white">Servicios Activos y Canales</div>
+              <div class="text-xs text-slate-400">Control total de activaciones en tiempo real</div>
             </div>
           </div>
           <div class="flex flex-wrap items-center gap-6">
@@ -136,80 +136,135 @@
             <label class="flex items-center gap-2 cursor-pointer text-xs font-semibold text-slate-300">
               <input type="checkbox" id="switchVoice" onchange="toggleFeature('voiceEnabled', this.checked)" class="sr-only peer" checked>
               <div class="w-9 h-5 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-blue-600 relative"></div>
-              <span>Llamadas Voz</span>
+              <span>Llamadas</span>
             </label>
             <label class="flex items-center gap-2 cursor-pointer text-xs font-semibold text-slate-300">
               <input type="checkbox" id="switchPayments" onchange="toggleFeature('paymentsEnabled', this.checked)" class="sr-only peer" checked>
               <div class="w-9 h-5 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-blue-600 relative"></div>
-              <span>Medios Pago</span>
+              <span>Medios de Pago</span>
             </label>
           </div>
         </div>
 
-        <!-- FORMULARIO DE DATOS -->
+        <!-- FORMULARIO DE DATOS ESPECÍFICOS -->
         <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-6">
           <div class="flex items-center justify-between border-b border-slate-800 pb-4">
-            <h3 class="text-base font-bold text-slate-200">Datos Específicos y Relevantes del Negocio</h3>
+            <div>
+              <span class="text-[10px] font-bold text-blue-400 uppercase tracking-widest">PERSONALIZACIÓN DE RUBRO</span>
+              <h3 class="text-base font-bold text-slate-200">Seleccionar y Personalizar Rubro de Negocio</h3>
+            </div>
             <button onclick="saveCurrentProfile()" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs px-4 py-2 rounded-lg flex items-center gap-2 transition-all">
-              <i class="fa-solid fa-floppy-disk"></i> Guardar Cambios
+              <i class="fa-solid fa-floppy-disk"></i> Guardar y Aplicar Base de Datos
             </button>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-400 mb-1">Rubro o Sector Comercial (Categorías en Tendencia)</label>
+              <select id="profRubro" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500">
+                <!-- INFOPRODUCTOS Y DIGITALES -->
+                <option value="ebooks">Venta de E-books / Libros Digitales</option>
+                <option value="recetas">Recetarios de Cocina / Repostería</option>
+                <option value="cursos">Educación / Cursos Digitales / Infoproductos</option>
+                <option value="afiliados">Marketing de Afiliados / Hotmart</option>
+                <option value="coaching">Coaching / Mentorías / Desarrollo Personal</option>
+                <option value="idiomas">Academias de Idiomas / Masterclasses</option>
+                <option value="fitness_digital">Planes de Fitness & Nutrición Online</option>
+                <option value="crypto_trading">Criptomonedas / Trading / Finanzas</option>
+                
+                <!-- COMERCIO FÍSICO Y SALUD -->
+                <option value="botica">Botica / Farmacia / Salud & Bienestar</option>
+                <option value="dental">Clínica Dental / Odontología</option>
+                <option value="comics">Tienda de Cómics, Manga & Coleccionables</option>
+                <option value="veterinaria">Veterinaria & Pet Shop</option>
+                <option value="restaurante">Restaurante / Pollería / Gastronomía</option>
+                <option value="gym">Gimnasio & Centro Fitness</option>
+                <option value="ecommerce">E-commerce / Tienda Online Multiproducto</option>
+                <option value="belleza">Salón de Belleza / Skincare / Cosmética</option>
+                <option value="bienes_raices">Bienes Raíces / Alquiler y Venta</option>
+                <option value="importacion">Importación / Dropshipping / Tecnología</option>
+                <option value="fotografia">Estudio Fotográfico / Producción Audiovisual</option>
+                <option value="moda">Moda / Calzado / Ropa Exclusiva</option>
+              </select>
+            </div>
             <div>
               <label class="block text-xs font-semibold text-slate-400 mb-1">Nombre Comercial del Negocio</label>
               <input type="text" id="profName" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500">
             </div>
             <div>
-              <label class="block text-xs font-semibold text-slate-400 mb-1">Rubro / Sector Comercial</label>
-              <select id="profRubro" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500">
-                <option value="botica">Botica / Farmacia / Salud</option>
-                <option value="dental">Clínica Dental / Odontología</option>
-                <option value="comics">Tienda de Cómics & Manga</option>
-                <option value="gym">Gimnasio & Centro Fitness</option>
-                <option value="restaurante">Restaurante / Pollería / Gastronomía</option>
-                <option value="ecommerce">E-commerce / Tienda Online</option>
-                <option value="veterinaria">Veterinaria & Pet Shop</option>
-                <option value="educacion">Educación / Infoproductos</option>
-              </select>
+              <label class="block text-xs font-semibold text-slate-400 mb-1">Slogan o Especialidad Principal</label>
+              <input type="text" id="profSlogan" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500">
             </div>
             <div>
-              <label class="block text-xs font-semibold text-slate-400 mb-1">Eslogan o Especialidad</label>
-              <input type="text" id="profSlogan" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500">
+              <label class="block text-xs font-semibold text-slate-400 mb-1">Horario y Atención Cobertura</label>
+              <input type="text" id="profHours" value="Atención automática 24/7 + Resistencia IA" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm text-white">
             </div>
             <div>
               <label class="block text-xs font-semibold text-slate-400 mb-1">Teléfono / WhatsApp Principal</label>
               <input type="text" id="profPhone" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500">
             </div>
-            <div class="md:col-span-2">
-              <label class="block text-xs font-semibold text-slate-400 mb-1">Políticas de Garantía, Precios y Envíos</label>
-              <textarea id="profPolicies" rows="3" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-3 text-sm text-white focus:outline-none focus:border-blue-500"></textarea>
+            <div>
+              <label class="block text-xs font-semibold text-slate-400 mb-1">Enlace o Web / Catálogo en la Nube</label>
+              <input type="text" id="profCatalog" placeholder="https://bit.ly/catalogo-digital" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm text-white">
+            </div>
+            <div class="md:col-span-3">
+              <label class="block text-xs font-semibold text-slate-400 mb-1">Política de Precios & Moneda</label>
+              <input type="text" id="profPolicies" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500">
             </div>
           </div>
         </div>
 
-        <!-- DUDAS NO RESUELTAS -->
+        <!-- FILTRO Y REGISTRO DE DUDAS NO RESUELTAS -->
         <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
           <div class="flex items-center justify-between">
-            <h3 class="text-base font-bold text-slate-200">Filtro y Registro de Dudas No Resueltas</h3>
-            <span class="text-xs bg-amber-500/10 text-amber-400 border border-amber-500/30 px-2.5 py-1 rounded-full font-semibold">Aprendizaje Activo</span>
+            <div>
+              <span class="text-[10px] font-bold text-amber-400 uppercase tracking-widest">APRENDIZAJE CON IA EN VIVO</span>
+              <h3 class="text-base font-bold text-slate-200">Filtro y Registro de Dudas No Resueltas</h3>
+            </div>
+            <span class="text-xs bg-amber-500/10 text-amber-400 border border-amber-500/30 px-2.5 py-1 rounded-full font-semibold">Pendientes de revisión</span>
           </div>
-          <p class="text-xs text-slate-400">Consultas recibidas que requieren entrenamiento manual:</p>
+          <p class="text-xs text-slate-400">Preguntas inéditas de clientes recibidas vía WhatsApp, Messenger y llamadas de voz:</p>
 
           <div id="unresolvedList" class="space-y-3">
             <!-- Dinámico -->
           </div>
         </div>
 
-        <!-- SECCIÓN SUBIR INFORMACIÓN / ENTRENAMIENTO -->
+        <!-- ENTRENAMIENTO UNIFICADO: SUBIR INFORMACIÓN -->
         <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
-          <h3 class="text-base font-bold text-slate-200">Subir información y entrenar al Asistente</h3>
-          <div class="border-2 border-dashed border-slate-800 hover:border-blue-500/50 rounded-xl p-8 text-center bg-slate-950/50 transition-all cursor-pointer" onclick="document.getElementById('fileUpload').click()">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="text-base font-bold text-slate-200">Subir información y entrenar al Asistente (Mensajería y Llamadas/Voz)</h3>
+              <p class="text-xs text-slate-400 mt-0.5">Nutre con documentos, catálogos, audios o preguntas frecuentes para que la IA responda con precisión y ventas automatizadas.</p>
+            </div>
+            <div class="flex gap-2 text-xs text-slate-400">
+              <span class="bg-slate-800 px-2 py-1 rounded">Mensajería/WhatsApp/SMS</span>
+              <span class="bg-slate-800 px-2 py-1 rounded">Llamadas/Voz AI</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
+            <div class="p-3 bg-slate-950 border border-slate-800 rounded-xl text-xs text-slate-300">
+              <i class="fa-solid fa-file-pdf text-blue-400 text-lg mb-1 block"></i> PDF, DOCX, TXT, Excel, Manuales
+            </div>
+            <div class="p-3 bg-slate-950 border border-slate-800 rounded-xl text-xs text-slate-300">
+              <i class="fa-solid fa-comments text-amber-400 text-lg mb-1 block"></i> Preguntas Frecuentes & Objeciones
+            </div>
+            <div class="p-3 bg-slate-950 border border-slate-800 rounded-xl text-xs text-slate-300">
+              <i class="fa-solid fa-microphone text-emerald-400 text-lg mb-1 block"></i> Audios voz & Catálogo de llamadas
+            </div>
+            <div class="p-3 bg-slate-950 border border-slate-800 rounded-xl text-xs text-slate-300">
+              <i class="fa-solid fa-link text-purple-400 text-lg mb-1 block"></i> Google Sheets, Drive, Enlaces web
+            </div>
+          </div>
+
+          <div class="border-2 border-dashed border-slate-800 hover:border-blue-500/50 rounded-xl p-6 text-center bg-slate-950/50 transition-all cursor-pointer" onclick="document.getElementById('fileUpload').click()">
             <i class="fa-solid fa-cloud-arrow-up text-3xl text-blue-400 mb-2"></i>
-            <p class="text-sm font-semibold text-slate-300">Arrastra y suelta tus archivos aquí o haz clic para examinar</p>
-            <p class="text-xs text-slate-500 mt-1">Soporta PDF, DOCX, TXT, Excel o Audios de catálogo (máx 25MB)</p>
+            <p class="text-sm font-semibold text-slate-300">Arrastra y suelta tus archivos aquí: Documentos de texto o audios de voz</p>
+            <p class="text-xs text-slate-500 mt-1">Soporta formatos PDF, DOCX, TXT, Excel, Docx, etc. (Máx 25MB por archivo)</p>
             <input type="file" id="fileUpload" class="hidden" onchange="handleFileUpload(event)">
           </div>
+
           <div id="uploadedFiles" class="flex flex-wrap gap-2 pt-2">
             <!-- Dinámico -->
           </div>
@@ -218,26 +273,26 @@
 
       <!-- TAB 2: MENSAJERÍA -->
       <section id="messagingTab" class="hidden space-y-6">
-        <h2 class="text-2xl font-extrabold text-white">Asistente de Mensajería (WhatsApp, Messenger, Telegram)</h2>
+        <h2 class="text-2xl font-extrabold text-white">Asistente de Mensajería Omni-Canal</h2>
         <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
-          <p class="text-sm text-slate-400">Configura respuestas automáticas, saludos iniciales y reglas de derivación a agentes humanos.</p>
+          <p class="text-sm text-slate-400">Configura integraciones directas con WhatsApp Business API, Telegram, Messenger e Instagram.</p>
           <div>
             <label class="block text-xs font-semibold text-slate-400 mb-1">Mensaje de Bienvenida Automático</label>
-            <input type="text" id="msgWelcome" value="¡Hola! Gracias por escribirnos. ¿En qué puedo ayudarte hoy?" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm text-white">
+            <input type="text" id="msgWelcome" value="¡Hola! Gracias por escribirnos. Te atiende el asistente inteligente de ventas 24/7." class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm text-white">
           </div>
         </div>
       </section>
 
       <!-- TAB 3: LLAMADAS -->
       <section id="voiceTab" class="hidden space-y-6">
-        <h2 class="text-2xl font-extrabold text-white">Asistente de Llamadas por Voz IA</h2>
+        <h2 class="text-2xl font-extrabold text-white">Asistente de Llamadas por Voz IA en Tiempo Real</h2>
         <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
-          <p class="text-sm text-slate-400">Voz sintetizada y toma de pedidos telefónicos en tiempo real.</p>
+          <p class="text-sm text-slate-400">Gestiona llamadas telefónicas entrantes y salientes automatizando la preventa por voz con acento neutro o local.</p>
           <div>
-            <label class="block text-xs font-semibold text-slate-400 mb-1">Tono de Voz del Asistente</label>
+            <label class="block text-xs font-semibold text-slate-400 mb-1">Modelo de Voz IA</label>
             <select class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm text-white">
-              <option>Español Neutro - Amigable / Comercial</option>
-              <option>Español Peruano - Formal / Ejecutivo</option>
+              <option>Español Comercial - Neutro Dinámico</option>
+              <option>Español Latinoamericano - Cálido / Empático</option>
             </select>
           </div>
         </div>
@@ -245,17 +300,17 @@
 
       <!-- TAB 4: MEDIOS DE PAGO -->
       <section id="paymentsTab" class="hidden space-y-6">
-        <h2 class="text-2xl font-extrabold text-white">Medios de Pago y Cobro Integrados</h2>
+        <h2 class="text-2xl font-extrabold text-white">Medios de Pago y Cobro Automatizado</h2>
         <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
-          <p class="text-sm text-slate-400">Registra tus billeteras digitales y cuentas bancarias para que el bot emita las instrucciones de pago.</p>
+          <p class="text-sm text-slate-400">Configura tus billeteras para que el bot envíe automáticamente los datos de pago al cerrar una venta.</p>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label class="block text-xs font-semibold text-slate-400 mb-1">Número Yape / Plin</label>
+              <label class="block text-xs font-semibold text-slate-400 mb-1">Billetera Yape / Plin / Transferencia</label>
               <input type="text" id="payYape" value="+51 987 654 321" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm text-white">
             </div>
             <div>
-              <label class="block text-xs font-semibold text-slate-400 mb-1">Cuenta Bancaria / CCI</label>
-              <input type="text" id="payBank" value="BCP: 191-XXXXX-0-01" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm text-white">
+              <label class="block text-xs font-semibold text-slate-400 mb-1">Pasarela / Link de Pago / Tarjetas</label>
+              <input type="text" id="payGateway" value="Stark / Culqi / Hotmart Pay Link" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm text-white">
             </div>
           </div>
         </div>
@@ -268,27 +323,27 @@
             <i class="fa-solid fa-user-shield text-amber-400 text-2xl"></i>
             <div>
               <h2 class="text-lg font-bold text-amber-300">Panel Privado de Administración Central</h2>
-              <p class="text-xs text-amber-200/70">Acceso maestro exclusivo para la gestión global del sistema.</p>
+              <p class="text-xs text-amber-200/70">Control maestro exclusivo para crear, editar o eliminar perfiles y accesos.</p>
             </div>
           </div>
           <button onclick="logoutAdmin()" class="bg-red-500/20 hover:bg-red-500/30 text-red-400 border border-red-500/30 text-xs px-3 py-1.5 rounded-lg">Cerrar Sesión Admin</button>
         </div>
 
         <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-6">
-          <h3 class="text-base font-bold text-slate-200">Crear Nuevo Perfil de Cliente</h3>
+          <h3 class="text-base font-bold text-slate-200">Crear Nuevo Perfil de Negocio Personalizado</h3>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-            <input type="text" id="newProfId" placeholder="ID Único (ej. botica-central)" class="bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm">
+            <input type="text" id="newProfId" placeholder="ID Único (ej. recetas-fit)" class="bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm">
             <input type="text" id="newProfName" placeholder="Nombre Comercial" class="bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm">
             <select id="newProfRubro" class="bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm">
+              <option value="recetas">Recetas de Cocina / Infoproductos</option>
+              <option value="ebooks">Venta de E-books</option>
               <option value="botica">Botica / Farmacia</option>
               <option value="dental">Clínica Dental</option>
-              <option value="comics">Tienda Cómics</option>
-              <option value="gym">Gimnasio</option>
-              <option value="restaurante">Restaurante</option>
+              <option value="ecommerce">E-commerce General</option>
             </select>
           </div>
           <button onclick="createNewProfileAdmin()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs px-4 py-2 rounded-lg">
-            <i class="fa-solid fa-plus mr-1"></i> Crear Perfil
+            <i class="fa-solid fa-plus mr-1"></i> Crear Perfil en el Sistema
           </button>
         </div>
 
@@ -311,7 +366,7 @@
           <i class="fa-solid fa-lock"></i>
         </div>
         <h3 class="text-lg font-bold text-white">Acceso al Panel Oculto</h3>
-        <p class="text-xs text-slate-400">Ingresa tus credenciales de administrador</p>
+        <p class="text-xs text-slate-400">Ingresa credenciales de administrador maestro</p>
       </div>
 
       <div class="space-y-3">
@@ -369,57 +424,63 @@
   </div>
 
   <script>
-    // ESTADO DE LA APLICACIÓN
+    // ESTADO DE LA APLICACIÓN CON RUBROS AMPLIADOS (TIPO HOTMART / INFOPRODUCTOS)
     let profiles = {
+      "recetas-demo": {
+        name: "Recetario MasterChef & Repostería Pro",
+        rubro: "recetas",
+        slogan: "+500 recetas en PDF con acceso inmediato de por vida",
+        hours: "Atención automática 24/7 + Resistencia IA",
+        phone: "+51 987 654 321",
+        catalog: "https://hotmart.com/es/recetario-pro",
+        policies: "Soles Peruanos (PEN / S/.) - Pago único y descarga instantánea por PDF y EPUB con garantía de satisfacción de 7 días.",
+        messagingEnabled: true,
+        voiceEnabled: true,
+        paymentsEnabled: true,
+        unresolved: [
+          "¿Tienen envíos a provincias en domingo y cuál es el recargo?",
+          "¿Cumplen pagos con tarjeta de crédito corporativa sin intereses en 4 docenas?",
+          "¿Facilitan descuentos adicionales para compras al por mayor mayores a 10 unidades?"
+        ],
+        files: ["Recetario_Cocina_2026.pdf", "Manual_Reposteria.docx", "Pregunta_Frecuente.txt"]
+      },
+      "ebooks-demo": {
+        name: "Biblioteca Digital Best Sellers Global",
+        rubro: "ebooks",
+        slogan: "Los mejores best sellers de desarrollo personal y finanzas en formato digital",
+        hours: "Atención automática 24/7",
+        phone: "+51 912 345 678",
+        catalog: "https://bit.ly/ebooks-digitales",
+        policies: "Acceso inmediato en PDF y EPUB vía plataforma segura.",
+        messagingEnabled: true,
+        voiceEnabled: true,
+        paymentsEnabled: true,
+        unresolved: [
+          "¿Los libros digitales se pueden leer en Kindle y iPad sin restricciones?"
+        ],
+        files: ["Catalogo_Libros_2026.pdf"]
+      },
       "botica-demo": {
         name: "Farmacia & Botica San Martín",
         rubro: "botica",
         slogan: "Salud y medicamentos con envío inmediato 24/7",
-        phone: "+51 987 654 321",
-        policies: "Envíos a domicilio en 30 minutos. Garantía de productos sellados de laboratorio.",
-        messagingEnabled: true,
-        voiceEnabled: true,
-        paymentsEnabled: true,
-        unresolved: [
-          "¿Tienen pañales para adulto en talla L y cuál es el precio por paquete?",
-          "¿Aceptan recetas médicas digitales firmadas por ESSALUD?"
-        ],
-        files: ["Catalogo_Medicamentos_2026.pdf", "Precios_Pastillas.xlsx"]
-      },
-      "dental-demo": {
-        name: "Clínica Odontológica Sonrisas",
-        rubro: "dental",
-        slogan: "Especialistas en Ortodoncia y Blanqueamiento Dental",
-        phone: "+51 912 345 678",
-        policies: "Consultas de diagnóstico gratuitas previa cita.",
-        messagingEnabled: true,
-        voiceEnabled: false,
-        paymentsEnabled: true,
-        unresolved: [
-          "¿Cuál es el costo de los brackets estéticos de zafiro?"
-        ],
-        files: ["Tarifario_Servicios_Dentales.pdf"]
-      },
-      "comics-demo": {
-        name: "Kingdom Comics & Manga",
-        rubro: "comics",
-        slogan: "Figuras coleccionables, cómics y manga importado",
+        hours: "Atención 24 Horas",
         phone: "+51 999 888 777",
-        policies: "Reservas de tomos en preventa abonando el 50%.",
+        catalog: "https://bit.ly/botica-salud",
+        policies: "Envíos a domicilio en 30 minutos.",
         messagingEnabled: true,
         voiceEnabled: true,
         paymentsEnabled: true,
         unresolved: [
-          "¿Tienen disponible el tomo 103 de One Piece edición especial?"
+          "¿Tienen pañales para adulto en talla L?"
         ],
-        files: ["Novedades_Preventa_Manga.pdf"]
+        files: ["Medicamentos_Stock.xlsx"]
       }
     };
 
-    let currentProfileId = "botica-demo";
+    let currentProfileId = "recetas-demo";
     let isAdminLoggedIn = false;
 
-    // INICIALIZACIÓN
     window.addEventListener("DOMContentLoaded", () => {
       loadProfilesFromStorage();
       renderProfileSelector();
@@ -427,14 +488,14 @@
     });
 
     function loadProfilesFromStorage() {
-      const saved = localStorage.getItem("ezrabot_profiles");
+      const saved = localStorage.getItem("ezrabot_profiles_v2");
       if (saved) {
         profiles = JSON.parse(saved);
       }
     }
 
     function saveProfilesToStorage() {
-      localStorage.setItem("ezrabot_profiles", JSON.stringify(profiles));
+      localStorage.setItem("ezrabot_profiles_v2", JSON.stringify(profiles));
     }
 
     function renderProfileSelector() {
@@ -461,7 +522,9 @@
       document.getElementById("profName").value = p.name;
       document.getElementById("profRubro").value = p.rubro;
       document.getElementById("profSlogan").value = p.slogan;
+      document.getElementById("profHours").value = p.hours || "Atención automática 24/7";
       document.getElementById("profPhone").value = p.phone;
+      document.getElementById("profCatalog").value = p.catalog || "";
       document.getElementById("profPolicies").value = p.policies;
 
       document.getElementById("switchMessaging").checked = p.messagingEnabled;
@@ -477,12 +540,14 @@
       p.name = document.getElementById("profName").value;
       p.rubro = document.getElementById("profRubro").value;
       p.slogan = document.getElementById("profSlogan").value;
+      p.hours = document.getElementById("profHours").value;
       p.phone = document.getElementById("profPhone").value;
+      p.catalog = document.getElementById("profCatalog").value;
       p.policies = document.getElementById("profPolicies").value;
 
       saveProfilesToStorage();
       renderProfileSelector();
-      alert("¡Configuración guardada con éxito!");
+      alert("¡Configuración guardada y sincronizada con éxito!");
     }
 
     function toggleFeature(featureKey, isChecked) {
@@ -503,7 +568,7 @@
         item.innerHTML = `
           <div class="text-xs text-slate-300 font-medium">"${q}"</div>
           <button onclick="resolveQuery(${idx})" class="bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 border border-blue-500/30 text-[11px] font-semibold px-3 py-1.5 rounded-lg shrink-0">
-            Añadir respuesta oficial
+            Añadir respuesta oficial y entrenar asistente
           </button>
         `;
         list.appendChild(item);
@@ -511,12 +576,12 @@
     }
 
     function resolveQuery(idx) {
-      const ans = prompt("Escribe la respuesta oficial para esta duda:");
+      const ans = prompt("Escribe la respuesta oficial para entrenar al asistente:");
       if (ans) {
         profiles[currentProfileId].unresolved.splice(idx, 1);
         saveProfilesToStorage();
         renderUnresolvedQueries(profiles[currentProfileId].unresolved);
-        alert("¡Respuesta incorporada al aprendizaje del asistente!");
+        alert("¡Respuesta incorporada al núcleo del asistente!");
       }
     }
 
@@ -527,6 +592,7 @@
         profiles[currentProfileId].files.push(fileName);
         saveProfilesToStorage();
         renderUploadedFiles(profiles[currentProfileId].files);
+        alert(`¡Archivo "${fileName}" cargado y entrenado con éxito!`);
       }
     }
 
@@ -541,7 +607,6 @@
       });
     }
 
-    // NAVEGACIÓN PESTAÑAS
     function switchTab(tabId) {
       const tabs = ["profileTab", "messagingTab", "voiceTab", "paymentsTab", "adminTab"];
       tabs.forEach(t => {
@@ -560,7 +625,6 @@
       }
     }
 
-    // LOGIN & ADMIN DASHBOARD
     function openLoginModal() {
       if (isAdminLoggedIn) {
         switchTab("adminTab");
@@ -623,16 +687,18 @@
       const rubro = document.getElementById("newProfRubro").value;
 
       if (!id || !name) {
-        alert("Completa el ID y el Nombre");
+        alert("Completa el ID y el Nombre del perfil");
         return;
       }
 
       profiles[id] = {
         name: name,
         rubro: rubro,
-        slogan: "Atención personalizada 24/7",
+        slogan: "Asistente inteligente de ventas 24/7",
+        hours: "Atención automática 24/7",
         phone: "+51 900 000 000",
-        policies: "Envíos y garantía estándar.",
+        catalog: "https://bit.ly/catalogo",
+        policies: "Políticas estándar de cobro y garantía.",
         messagingEnabled: true,
         voiceEnabled: true,
         paymentsEnabled: true,
@@ -643,7 +709,7 @@
       saveProfilesToStorage();
       renderProfileSelector();
       renderAdminProfiles();
-      alert("¡Perfil creado exitosamente!");
+      alert("¡Perfil creado con éxito!");
     }
 
     function deleteProfileAdmin(id) {
@@ -661,7 +727,6 @@
       }
     }
 
-    // SIMULADOR DE CHAT PROBAR EN VIVO
     function toggleTestModal() {
       const modal = document.getElementById("testModal");
       if (modal.classList.contains("hidden")) {
@@ -680,7 +745,7 @@
         <div class="bg-blue-600/10 border border-blue-500/20 text-slate-200 text-xs p-3 rounded-xl space-y-1">
           <div class="font-bold text-blue-400">¡Hola! Bienvenido a ${p.name}.</div>
           <div>${p.slogan}</div>
-          <div class="text-[10px] text-slate-400 pt-1">Escribe una pregunta para probar las respuestas en vivo.</div>
+          <div class="text-[10px] text-slate-400 pt-1">Prueba escribiendo cualquier consulta sobre precios, catálogo o pagos.</div>
         </div>
       `;
     }
@@ -701,10 +766,10 @@
 
       setTimeout(() => {
         const p = profiles[currentProfileId];
-        let reply = `Gracias por escribir a ${p.name}. Para coordinar compras o consultas directas de este rubro (${p.rubro}), puedes contactarnos al ${p.phone}.`;
+        let reply = `Gracias por escribir a ${p.name}. Puedes acceder a nuestro catálogo completo y enlaces de pago directo aquí: ${p.catalog || 'Consúltenos al ' + p.phone}.`;
         
         if (text.toLowerCase().includes("pago") || text.toLowerCase().includes("yape")) {
-          reply = `Aceptamos Yape, Plin y transferencias bancarias directas.`;
+          reply = `Aceptamos Yape, Plin y tarjetas de crédito de forma segura. ${p.policies}`;
         }
 
         msgBox.innerHTML += `

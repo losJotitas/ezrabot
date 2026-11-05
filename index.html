@@ -21,7 +21,7 @@
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col antialiased selection:bg-blue-600 selection:text-white">
 
-  <!-- ENCABEZADO SUPERIOR -->
+  <!-- ENCABEZADO SUPERIOR (PC & CELULAR) -->
   <header class="bg-slate-900/90 border-b border-slate-800 sticky top-0 z-40 backdrop-blur-md">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2">
       
@@ -38,7 +38,7 @@
       <div class="hidden sm:flex items-center gap-2 bg-slate-950/80 px-3 py-1.5 rounded-lg border border-slate-800">
         <i class="fa-solid fa-store text-blue-400 text-xs"></i>
         <select id="profileSelector" onchange="switchProfile(this.value)" class="bg-transparent text-xs text-slate-200 font-medium focus:outline-none cursor-pointer pr-2">
-          <!-- Dinámico -->
+          <!-- Carga dinámica -->
         </select>
       </div>
 
@@ -60,10 +60,11 @@
       </div>
     </div>
 
+    <!-- SELECTOR DE RUBRO EN PANTALLAS MÓVILES -->
     <div class="sm:hidden px-4 py-2 bg-slate-950 border-t border-slate-800/60 flex items-center gap-2">
       <span class="text-[11px] text-slate-400 font-medium shrink-0"><i class="fa-solid fa-store text-blue-400 mr-1"></i>Perfil:</span>
       <select id="profileSelectorMobile" onchange="switchProfile(this.value)" class="w-full bg-slate-900 text-xs text-slate-200 font-medium px-2 py-1 rounded border border-slate-800 focus:outline-none">
-        <!-- Dinámico -->
+        <!-- Carga dinámica -->
       </select>
     </div>
   </header>
@@ -101,27 +102,42 @@
       </nav>
     </aside>
 
-    <!-- CONTENIDO PRINCIPAL -->
+    <!-- ÁREA PRINCIPAL -->
     <main class="flex-1 p-4 sm:p-6 custom-scrollbar overflow-y-auto">
       
-      <!-- PESTAÑA 1: PERFIL DE NEGOCIO -->
+      <!-- PESTAÑA 1: CREACIÓN DE PERFILES Y APRENDIZAJES -->
       <section id="profileTab" class="hidden space-y-5">
         <div>
           <div class="text-[10px] font-bold text-blue-400 uppercase tracking-widest">ARQUITECTURA DE NEGOCIOS • DESPLIEGUE INSTANTÁNEO</div>
           <h2 class="text-xl sm:text-2xl font-extrabold text-white">Configura tu Perfil de Negocio</h2>
           <p class="text-xs sm:text-sm text-slate-400 mt-0.5">Crea o edita la identidad de tu empresa y nutre la base de conocimiento central.</p>
         </div>
-        <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
-          <h3 class="text-sm font-bold text-slate-200">Datos Principales</h3>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <input type="text" id="profName" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white" placeholder="Nombre Comercial">
-            <input type="text" id="profPhone" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white" placeholder="WhatsApp Principal (+51 ...)">
+
+        <div class="p-4 sm:p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <h3 class="text-sm sm:text-base font-bold text-slate-200">Datos Específicos del Negocio</h3>
+            <button onclick="saveCurrentProfile()" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs px-3.5 py-1.5 rounded-lg flex items-center gap-1.5">
+              <i class="fa-solid fa-floppy-disk"></i> Guardar Cambios
+            </button>
           </div>
-          <button onclick="saveCurrentProfile()" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs px-4 py-2 rounded-lg">Guardar Configuración</button>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+            <div>
+              <label class="block text-xs font-semibold text-slate-400 mb-1">Nombre Comercial del Negocio</label>
+              <input type="text" id="profName" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-400 mb-1">Teléfono / WhatsApp Principal</label>
+              <input type="text" id="profPhone" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-400 mb-1">Eslogan o Especialidad</label>
+              <input type="text" id="profSlogan" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white">
+            </div>
+          </div>
         </div>
       </section>
 
-      <!-- PESTAÑA 2: ASISTENTE DE MENSAJERÍA (FIEL A TU CAPTURA + MODALES DE CONEXIÓN) -->
+      <!-- PESTAÑA 2: ASISTENTE DE MENSAJERÍA (100% IDÉNTICO A LAS CAPTURAS) -->
       <section id="messagingTab" class="space-y-6">
         
         <!-- INTELIGENCIA ACTIVA 24/7 -->
@@ -205,7 +221,7 @@
               <div class="text-[11px] text-slate-400">21 personas chateando en línea</div>
               <div class="flex items-center gap-2 pt-2 border-t border-slate-800">
                 <button onclick="openConnectModal('Telegram')" class="flex-1 bg-sky-600 hover:bg-sky-500 text-white text-[11px] font-semibold py-1.5 rounded-lg">Vincular Telegram</button>
-                <button onclick="alert('Sincronizando Bot de Telegram...')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] px-3 py-1.5 rounded-lg"><i class="fa-solid fa-rotate"></i> Sincronizar</button>
+                <button onclick="alert('Sincronizando Telegram...')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] px-3 py-1.5 rounded-lg"><i class="fa-solid fa-rotate"></i> Sincronizar</button>
               </div>
             </div>
 
@@ -226,7 +242,7 @@
               <div class="text-[11px] text-slate-400">27 conversaciones activas</div>
               <div class="flex items-center gap-2 pt-2 border-t border-slate-800">
                 <button onclick="openConnectModal('Facebook')" class="flex-1 bg-blue-600 hover:bg-blue-500 text-white text-[11px] font-semibold py-1.5 rounded-lg">Vincular Facebook</button>
-                <button onclick="alert('Sincronizando Meta Graph API...')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] px-3 py-1.5 rounded-lg"><i class="fa-solid fa-rotate"></i> Sincronizar</button>
+                <button onclick="alert('Sincronizando Facebook...')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] px-3 py-1.5 rounded-lg"><i class="fa-solid fa-rotate"></i> Sincronizar</button>
               </div>
             </div>
 
@@ -247,7 +263,7 @@
               <div class="text-[11px] text-slate-400">48 personas atendidas hoy</div>
               <div class="flex items-center gap-2 pt-2 border-t border-slate-800">
                 <button onclick="openConnectModal('WhatsApp')" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white text-[11px] font-semibold py-1.5 rounded-lg">Conectar WhatsApp</button>
-                <button onclick="alert('Sincronizando WhatsApp Business API...')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] px-3 py-1.5 rounded-lg"><i class="fa-solid fa-rotate"></i> Sincronizar</button>
+                <button onclick="alert('Sincronizando WhatsApp...')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] px-3 py-1.5 rounded-lg"><i class="fa-solid fa-rotate"></i> Sincronizar</button>
               </div>
             </div>
 
@@ -268,7 +284,7 @@
               <div class="text-[11px] text-slate-400">19 mensajes atendidos</div>
               <div class="flex items-center gap-2 pt-2 border-t border-slate-800">
                 <button onclick="openConnectModal('Instagram')" class="flex-1 bg-pink-600 hover:bg-pink-500 text-white text-[11px] font-semibold py-1.5 rounded-lg">Conectar Instagram</button>
-                <button onclick="alert('Sincronizando Instagram Direct...')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] px-3 py-1.5 rounded-lg"><i class="fa-solid fa-rotate"></i> Sincronizar</button>
+                <button onclick="alert('Sincronizando Instagram...')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] px-3 py-1.5 rounded-lg"><i class="fa-solid fa-rotate"></i> Sincronizar</button>
               </div>
             </div>
 
@@ -289,7 +305,7 @@
               <div class="text-[11px] text-slate-400">Listo para recibir clientes</div>
               <div class="flex items-center gap-2 pt-2 border-t border-slate-800">
                 <button onclick="openConnectModal('Widget Web')" class="flex-1 bg-indigo-600 hover:bg-indigo-500 text-white text-[11px] font-semibold py-1.5 rounded-lg">&lt;&gt; Conectar Widget</button>
-                <button onclick="alert('Sincronizando Widget...')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] px-3 py-1.5 rounded-lg"><i class="fa-solid fa-rotate"></i> Sincronizar</button>
+                <button onclick="alert('Sincronizando Web...')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] px-3 py-1.5 rounded-lg"><i class="fa-solid fa-rotate"></i> Sincronizar</button>
               </div>
             </div>
 
@@ -453,7 +469,7 @@
 
       </section>
 
-      <!-- OTRAS PESTAÑAS (LLAMADAS, PAGOS, ADMIN, PERFIL) -->
+      <!-- OTROS MÓDULOS DEL SISTEMA -->
       <section id="voiceTab" class="hidden space-y-5">
         <h2 class="text-xl sm:text-2xl font-extrabold text-white">Asistente de Llamadas por Voz IA</h2>
       </section>
@@ -467,7 +483,7 @@
     </main>
   </div>
 
-  <!-- MODAL INTERACTIVO PARA CONECTAR CANALES Y CELULAR -->
+  <!-- MODAL PARA CONECTAR Y VINCULAR CANALES -->
   <div id="connectModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 max-w-md w-full space-y-4 shadow-2xl">
       <div class="flex items-center justify-between border-b border-slate-800 pb-3">
@@ -488,8 +504,8 @@
         </div>
         <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 text-[11px] text-slate-400 space-y-1">
           <div class="font-bold text-slate-300">Pasos de vinculación segura:</div>
-          <p>1. Introduce tu número principal o token oficial.</p>
-          <p>2. Haz clic en enlazar para sincronizar el Webhook con EZRABOT.</p>
+          <p>1. Introduce tu número principal o token de acceso.</p>
+          <p>2. Haz clic en vincular para sincronizar con EZRABOT.</p>
         </div>
       </div>
 
@@ -500,7 +516,36 @@
     </div>
   </div>
 
-  <!-- MODAL DE PRUEBA EN VIVO -->
+  <!-- MODAL DE ACCESO PANEL ADMIN (admin / ezrabot2026) -->
+  <div id="loginModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 max-w-sm w-full space-y-4 shadow-2xl">
+      <div class="text-center space-y-1">
+        <div class="w-10 h-10 bg-amber-500/10 text-amber-400 rounded-full flex items-center justify-center mx-auto text-lg border border-amber-500/20">
+          <i class="fa-solid fa-lock"></i>
+        </div>
+        <h3 class="text-base font-bold text-white">Acceso al Panel Oculto</h3>
+        <p class="text-xs text-slate-400">Credenciales del Administrador Maestro</p>
+      </div>
+
+      <div class="space-y-3">
+        <div>
+          <label class="block text-xs font-semibold text-slate-400 mb-1">Usuario</label>
+          <input type="text" id="adminUser" value="admin" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-400 mb-1">Contraseña</label>
+          <input type="password" id="adminPass" value="ezrabot2026" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white">
+        </div>
+      </div>
+
+      <div class="flex gap-2 pt-1">
+        <button onclick="closeLoginModal()" class="w-1/2 bg-slate-800 text-slate-300 font-semibold text-xs py-2 rounded-lg">Cancelar</button>
+        <button onclick="submitLogin()" class="w-1/2 bg-amber-600 hover:bg-amber-500 text-white font-semibold text-xs py-2 rounded-lg">Ingresar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIMULADOR CHAT EN VIVO -->
   <div id="testModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-2 sm:p-4">
     <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full h-[90vh] sm:h-[550px] flex flex-col shadow-2xl overflow-hidden">
       <div class="p-3.5 bg-slate-800/90 border-b border-slate-700 flex items-center justify-between">
@@ -511,7 +556,7 @@
           <div>
             <div class="text-xs sm:text-sm font-bold text-white">Valeria (Asistente Chat 24/7)</div>
             <div class="text-[10px] text-emerald-400 flex items-center gap-1">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> En línea respondiendo consultas
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Respondiendo automáticamente
             </div>
           </div>
         </div>
@@ -525,7 +570,7 @@
       </div>
 
       <div class="p-3 bg-slate-900 border-t border-slate-800 flex gap-2">
-        <input type="text" id="chatInput" placeholder="Escribe tu mensaje de prueba..." onkeypress="if(event.key==='Enter') sendChatMessage()" class="flex-1 bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500">
+        <input type="text" id="chatInput" placeholder="Escribe tu mensaje..." onkeypress="if(event.key==='Enter') sendChatMessage()" class="flex-1 bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500">
         <button onclick="sendChatMessage()" class="bg-blue-600 hover:bg-blue-500 text-white text-xs px-3.5 rounded-lg font-semibold"><i class="fa-solid fa-paper-plane"></i></button>
       </div>
     </div>
@@ -533,8 +578,10 @@
 
   <script>
     let activeChannelToConnect = "";
+    let isAdminLoggedIn = false;
     let profiles = {
-      "recetas-demo": { name: "Recetario MasterChef & Repostería Pro", phone: "+51 987 654 321" }
+      "recetas-demo": { name: "Recetario MasterChef & Repostería Pro", phone: "+51 987 654 321" },
+      "botica-demo": { name: "Farmacia & Botica San Martín", phone: "+51 912 345 678" }
     };
     let currentProfileId = "recetas-demo";
 
@@ -564,7 +611,6 @@
       else { txt.textContent = "Bot pausado (Modo manual)"; txt.className = "text-[10px] text-amber-400"; }
     }
 
-    // GESTIÓN DE MODAL DE CONEXIÓN DE CELULAR Y CANALES
     function openConnectModal(channelName) {
       activeChannelToConnect = channelName;
       document.getElementById("connectModalTitle").textContent = `Conectar y Vincular ${channelName}`;
@@ -574,28 +620,42 @@
       document.getElementById("connectModal").classList.remove("hidden");
     }
 
-    function closeConnectModal() {
-      document.getElementById("connectModal").classList.add("hidden");
-    }
+    function closeConnectModal() { document.getElementById("connectModal").classList.add("hidden"); }
 
     function confirmConnection() {
       const val = document.getElementById("connectInputValue").value.trim();
-      if (!val) { alert("Por favor ingresa un número o token válido."); return; }
-      
+      if (!val) { alert("Ingresa un dato válido."); return; }
       if (activeChannelToConnect === 'WhatsApp') {
         document.getElementById("waConnectedNumber").textContent = val;
         document.getElementById("configuredPhoneText").textContent = `Número configurado: ${val}`;
       }
-      alert(`¡Canal ${activeChannelToConnect} conectado y vinculado exitosamente con el número ${val}!`);
+      alert(`¡Canal ${activeChannelToConnect} conectado con éxito!`);
       closeConnectModal();
     }
 
-    function syncAllChannels() { alert("¡Sincronización masiva de todos los canales completada con éxito!"); }
+    function syncAllChannels() { alert("¡Sincronización masiva de canales completada!"); }
     function addNewQuickAnswer() { 
       const q = prompt("Escribe la nueva pregunta frecuente:");
-      if (q) alert("¡Pregunta y respuesta agregada al entrenamiento de chat con éxito!");
+      if (q) alert("¡Respuesta rápida integrada con éxito!");
     }
-    function saveMessagingChanges() { alert("¡Cambios de asistente de mensajería guardados y aplicados al instante en todos tus canales activos!"); }
+    function saveMessagingChanges() { alert("¡Cambios del Asistente guardados y sincronizados!"); }
+
+    function openLoginModal() {
+      if (isAdminLoggedIn) switchTab("adminTab");
+      else document.getElementById("loginModal").classList.remove("hidden");
+    }
+    function closeLoginModal() { document.getElementById("loginModal").classList.add("hidden"); }
+    function submitLogin() {
+      const u = document.getElementById("adminUser").value;
+      const p = document.getElementById("adminPass").value;
+      if (u === "admin" && p === "ezrabot2026") {
+        isAdminLoggedIn = true;
+        closeLoginModal();
+        document.getElementById("nav-adminTab").classList.remove("hidden");
+        document.getElementById("nav-adminTab").classList.add("flex");
+        switchTab("adminTab");
+      } else { alert("Credenciales incorrectas"); }
+    }
 
     function switchTab(tabId) {
       const tabs = ["profileTab", "messagingTab", "voiceTab", "paymentsTab", "adminTab"];

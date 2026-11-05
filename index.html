@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EZRABOT - Asistente de Mensajería Omni-Canal</title>
+  <title>EZRABOT - Asistente Omni-Canal Avanzado</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -115,13 +115,13 @@
           <h3 class="text-sm font-bold text-slate-200">Datos Principales</h3>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <input type="text" id="profName" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white" placeholder="Nombre Comercial">
-            <input type="text" id="profPhone" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white" placeholder="WhatsApp Principal">
+            <input type="text" id="profPhone" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white" placeholder="WhatsApp Principal (+51 ...)">
           </div>
           <button onclick="saveCurrentProfile()" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs px-4 py-2 rounded-lg">Guardar Configuración</button>
         </div>
       </section>
 
-      <!-- PESTAÑA 2: ASISTENTE DE MENSAJERÍA (FIDELES A TU CAPTURA) -->
+      <!-- PESTAÑA 2: ASISTENTE DE MENSAJERÍA (FIEL A TU CAPTURA + MODALES DE CONEXIÓN) -->
       <section id="messagingTab" class="space-y-6">
         
         <!-- INTELIGENCIA ACTIVA 24/7 -->
@@ -183,8 +183,8 @@
               </div>
               <div class="text-[11px] text-slate-400">14 SMS atendidos hoy en tiempo real</div>
               <div class="flex items-center gap-2 pt-2 border-t border-slate-800">
-                <button onclick="alert('Canal SMS conectado')" class="flex-1 bg-blue-600 hover:bg-blue-500 text-white text-[11px] font-semibold py-1.5 rounded-lg">Conectar SMS</button>
-                <button onclick="alert('Sincronizando SMS...')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] px-3 py-1.5 rounded-lg"><i class="fa-solid fa-rotate"></i> Sincronizar</button>
+                <button onclick="openConnectModal('SMS')" class="flex-1 bg-blue-600 hover:bg-blue-500 text-white text-[11px] font-semibold py-1.5 rounded-lg">Conectar SMS</button>
+                <button onclick="alert('Sincronizando pasarela SMS...')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] px-3 py-1.5 rounded-lg"><i class="fa-solid fa-rotate"></i> Sincronizar</button>
               </div>
             </div>
 
@@ -204,8 +204,8 @@
               </div>
               <div class="text-[11px] text-slate-400">21 personas chateando en línea</div>
               <div class="flex items-center gap-2 pt-2 border-t border-slate-800">
-                <button onclick="alert('Telegram vinculado')" class="flex-1 bg-sky-600 hover:bg-sky-500 text-white text-[11px] font-semibold py-1.5 rounded-lg">Vincular Telegram</button>
-                <button onclick="alert('Sincronizando Telegram...')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] px-3 py-1.5 rounded-lg"><i class="fa-solid fa-rotate"></i> Sincronizar</button>
+                <button onclick="openConnectModal('Telegram')" class="flex-1 bg-sky-600 hover:bg-sky-500 text-white text-[11px] font-semibold py-1.5 rounded-lg">Vincular Telegram</button>
+                <button onclick="alert('Sincronizando Bot de Telegram...')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] px-3 py-1.5 rounded-lg"><i class="fa-solid fa-rotate"></i> Sincronizar</button>
               </div>
             </div>
 
@@ -225,8 +225,8 @@
               </div>
               <div class="text-[11px] text-slate-400">27 conversaciones activas</div>
               <div class="flex items-center gap-2 pt-2 border-t border-slate-800">
-                <button onclick="alert('Messenger vinculado')" class="flex-1 bg-blue-600 hover:bg-blue-500 text-white text-[11px] font-semibold py-1.5 rounded-lg">Vincular Facebook</button>
-                <button onclick="alert('Sincronizando Facebook...')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] px-3 py-1.5 rounded-lg"><i class="fa-solid fa-rotate"></i> Sincronizar</button>
+                <button onclick="openConnectModal('Facebook')" class="flex-1 bg-blue-600 hover:bg-blue-500 text-white text-[11px] font-semibold py-1.5 rounded-lg">Vincular Facebook</button>
+                <button onclick="alert('Sincronizando Meta Graph API...')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] px-3 py-1.5 rounded-lg"><i class="fa-solid fa-rotate"></i> Sincronizar</button>
               </div>
             </div>
 
@@ -239,15 +239,15 @@
                   </div>
                   <div>
                     <div class="text-xs font-bold text-white">WhatsApp Business</div>
-                    <div class="text-[10px] text-slate-400">+51 987 654 321</div>
+                    <div class="text-[10px] text-slate-400" id="waConnectedNumber">+51 987 654 321</div>
                   </div>
                 </div>
                 <span class="text-[10px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded font-semibold">En vivo</span>
               </div>
               <div class="text-[11px] text-slate-400">48 personas atendidas hoy</div>
               <div class="flex items-center gap-2 pt-2 border-t border-slate-800">
-                <button onclick="alert('WhatsApp conectado')" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white text-[11px] font-semibold py-1.5 rounded-lg">Conectar WhatsApp</button>
-                <button onclick="alert('Sincronizando WhatsApp...')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] px-3 py-1.5 rounded-lg"><i class="fa-solid fa-rotate"></i> Sincronizar</button>
+                <button onclick="openConnectModal('WhatsApp')" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white text-[11px] font-semibold py-1.5 rounded-lg">Conectar WhatsApp</button>
+                <button onclick="alert('Sincronizando WhatsApp Business API...')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] px-3 py-1.5 rounded-lg"><i class="fa-solid fa-rotate"></i> Sincronizar</button>
               </div>
             </div>
 
@@ -267,8 +267,8 @@
               </div>
               <div class="text-[11px] text-slate-400">19 mensajes atendidos</div>
               <div class="flex items-center gap-2 pt-2 border-t border-slate-800">
-                <button onclick="alert('Instagram conectado')" class="flex-1 bg-pink-600 hover:bg-pink-500 text-white text-[11px] font-semibold py-1.5 rounded-lg">Conectar Instagram</button>
-                <button onclick="alert('Sincronizando Instagram...')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] px-3 py-1.5 rounded-lg"><i class="fa-solid fa-rotate"></i> Sincronizar</button>
+                <button onclick="openConnectModal('Instagram')" class="flex-1 bg-pink-600 hover:bg-pink-500 text-white text-[11px] font-semibold py-1.5 rounded-lg">Conectar Instagram</button>
+                <button onclick="alert('Sincronizando Instagram Direct...')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] px-3 py-1.5 rounded-lg"><i class="fa-solid fa-rotate"></i> Sincronizar</button>
               </div>
             </div>
 
@@ -288,18 +288,17 @@
               </div>
               <div class="text-[11px] text-slate-400">Listo para recibir clientes</div>
               <div class="flex items-center gap-2 pt-2 border-t border-slate-800">
-                <button onclick="alert('Widget web generado')" class="flex-1 bg-indigo-600 hover:bg-indigo-500 text-white text-[11px] font-semibold py-1.5 rounded-lg">&lt;&gt; Conectar Widget</button>
-                <button onclick="alert('Sincronizando Web...')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] px-3 py-1.5 rounded-lg"><i class="fa-solid fa-rotate"></i> Sincronizar</button>
+                <button onclick="openConnectModal('Widget Web')" class="flex-1 bg-indigo-600 hover:bg-indigo-500 text-white text-[11px] font-semibold py-1.5 rounded-lg">&lt;&gt; Conectar Widget</button>
+                <button onclick="alert('Sincronizando Widget...')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] px-3 py-1.5 rounded-lg"><i class="fa-solid fa-rotate"></i> Sincronizar</button>
               </div>
             </div>
 
           </div>
         </div>
 
-        <!-- BLOQUE INFERIOR DUPLO: RESPUESTAS AUTOMATIZADAS Y CONFIGURACIÓN DE TONO -->
+        <!-- RESPUESTAS AUTOMATIZADAS Y CONFIGURACIÓN DE TONO -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
           
-          <!-- RESPUESTAS AUTOMATIZADAS (2 COLS) -->
           <div class="lg:col-span-2 p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
             <div class="flex items-center justify-between">
               <div>
@@ -313,7 +312,6 @@
             <p class="text-xs text-slate-400">Configura cómo debe responder tu bot ante preguntas frecuentes de tus clientes:</p>
 
             <div class="space-y-3">
-              <!-- Item 1 -->
               <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
                 <div class="flex items-center justify-between">
                   <span class="text-xs font-bold text-slate-200">Pregunta: ¿Cuáles son los medios de pago y costos de envío?</span>
@@ -324,7 +322,6 @@
                 </p>
               </div>
 
-              <!-- Item 2 -->
               <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
                 <div class="flex items-center justify-between">
                   <span class="text-xs font-bold text-slate-200">Pregunta: ¿Tienen stock disponible y tiempos de entrega?</span>
@@ -335,7 +332,6 @@
                 </p>
               </div>
 
-              <!-- Item 3 -->
               <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
                 <div class="flex items-center justify-between">
                   <span class="text-xs font-bold text-slate-200">Pregunta: ¿Cómo solicito un cambio o garantía?</span>
@@ -348,10 +344,7 @@
             </div>
           </div>
 
-          <!-- CONFIGURACIÓN DE TONO Y TRASPASO (1 COL) -->
           <div class="space-y-6">
-            
-            <!-- PERSONALIDAD DEL ASISTENTE -->
             <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
               <div>
                 <span class="text-[10px] font-bold text-blue-400 uppercase tracking-widest">CONFIGURACIÓN DE TONO</span>
@@ -364,7 +357,7 @@
                   <input type="radio" name="toneChoice" checked class="mt-0.5 text-blue-600">
                   <div class="space-y-0.5">
                     <div class="text-xs font-bold text-white">Ásilo y sonriente</div>
-                    <div class="text-[10px] text-slate-400">Usa emojis con sutileza, celebra el interés y genera confianza al instante.[cite: 7]</div>
+                    <div class="text-[10px] text-slate-400">Usa emojis con sutileza, celebra el interés y genera confianza al instante[cite: 6].</div>
                   </div>
                 </label>
 
@@ -372,7 +365,7 @@
                   <input type="radio" name="toneChoice" class="mt-0.5 text-blue-600">
                   <div class="space-y-0.5">
                     <div class="text-xs font-bold text-white">Formal y ejecutivo</div>
-                    <div class="text-[10px] text-slate-400">Voz corporativa, sobria, precisa y con trato de cortesía tradicional.[cite: 7]</div>
+                    <div class="text-[10px] text-slate-400">Voz corporativa, sobria, precisa y con trato de cortesía tradicional[cite: 6].</div>
                   </div>
                 </label>
 
@@ -380,13 +373,12 @@
                   <input type="radio" name="toneChoice" class="mt-0.5 text-blue-600">
                   <div class="space-y-0.5">
                     <div class="text-xs font-bold text-white">Corto y al grano</div>
-                    <div class="text-[10px] text-slate-400">Directo a la información crítica de precios, envíos y enlaces en 1 frase.[cite: 7]</div>
+                    <div class="text-[10px] text-slate-400">Directo a la información crítica de precios, envíos y enlaces en 1 frase[cite: 6].</div>
                   </div>
                 </label>
               </div>
             </div>
 
-            <!-- TRASPASO INTELIGENTE -->
             <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-3">
               <div class="flex items-center justify-between">
                 <h3 class="text-xs font-bold text-white">Traspaso Inteligente a Celular Personal</h3>
@@ -399,8 +391,8 @@
                   <span class="font-bold text-slate-300">Alerta sonora y notificación inmediata</span>
                   <input type="checkbox" checked class="rounded text-blue-600">
                 </div>
-                <p class="text-[10px] text-slate-400">Cuando el cliente solicite hablar con una persona o formule una consulta personalizada, recibirá una notificación directa en tu móvil para responder con un solo toque.</p>
-                <div class="pt-1 text-[11px] text-blue-400 font-semibold">Número configurado: +51 987 654 321</div>
+                <p class="text-[10px] text-slate-400">Cuando el cliente solicite hablar con una persona o formule una consulta personalizada, recibirá una notificación directa en tu móvil para responder con un solo toque[cite: 6].</p>
+                <div class="pt-1 text-[11px] text-blue-400 font-semibold" id="configuredPhoneText">Número configurado: +51 987 654 321</div>
               </div>
             </div>
 
@@ -461,28 +453,51 @@
 
       </section>
 
-      <!-- PESTAÑA 3: LLAMADAS -->
+      <!-- OTRAS PESTAÑAS (LLAMADAS, PAGOS, ADMIN, PERFIL) -->
       <section id="voiceTab" class="hidden space-y-5">
         <h2 class="text-xl sm:text-2xl font-extrabold text-white">Asistente de Llamadas por Voz IA</h2>
-        <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
-          <p class="text-xs sm:text-sm text-slate-400">Configuración de voz conversacional y llamadas en tiempo real.</p>
-        </div>
       </section>
-
-      <!-- PESTAÑA 4: PAGOS -->
       <section id="paymentsTab" class="hidden space-y-5">
         <h2 class="text-xl sm:text-2xl font-extrabold text-white">Medios de Pago y Cobro</h2>
-        <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
-          <p class="text-xs sm:text-sm text-slate-400">Billeteras y pasarelas de cobro automático.</p>
-        </div>
       </section>
-
-      <!-- PESTAÑA 5: ADMIN -->
       <section id="adminTab" class="hidden space-y-5">
         <h2 class="text-xl sm:text-2xl font-extrabold text-white">Panel de Administración</h2>
       </section>
 
     </main>
+  </div>
+
+  <!-- MODAL INTERACTIVO PARA CONECTAR CANALES Y CELULAR -->
+  <div id="connectModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 max-w-md w-full space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-blue-600/20 text-blue-400 flex items-center justify-center text-sm font-bold">
+            <i class="fa-solid fa-link"></i>
+          </div>
+          <h3 class="text-sm font-bold text-white" id="connectModalTitle">Conectar Canal</h3>
+        </div>
+        <button onclick="closeConnectModal()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+      </div>
+
+      <div class="space-y-3 text-xs text-slate-300">
+        <p id="connectModalDesc">Ingresa los datos de vinculación oficial para habilitar este canal en tiempo real.</p>
+        <div>
+          <label class="block font-semibold text-slate-400 mb-1" id="inputLabelText">Número de Celular / Token de API</label>
+          <input type="text" id="connectInputValue" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-white text-xs focus:outline-none focus:border-blue-500" placeholder="+51 987 654 321">
+        </div>
+        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 text-[11px] text-slate-400 space-y-1">
+          <div class="font-bold text-slate-300">Pasos de vinculación segura:</div>
+          <p>1. Introduce tu número principal o token oficial.</p>
+          <p>2. Haz clic en enlazar para sincronizar el Webhook con EZRABOT.</p>
+        </div>
+      </div>
+
+      <div class="flex gap-2 pt-2">
+        <button onclick="closeConnectModal()" class="w-1/2 bg-slate-800 text-slate-300 font-semibold py-2 rounded-lg">Cancelar</button>
+        <button onclick="confirmConnection()" class="w-1/2 bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 rounded-lg">Vincular Ahora</button>
+      </div>
+    </div>
   </div>
 
   <!-- MODAL DE PRUEBA EN VIVO -->
@@ -500,9 +515,7 @@
             </div>
           </div>
         </div>
-        <button onclick="toggleTestModal()" class="text-slate-400 hover:text-white p-1">
-          <i class="fa-solid fa-xmark text-lg"></i>
-        </button>
+        <button onclick="toggleTestModal()" class="text-slate-400 hover:text-white p-1"><i class="fa-solid fa-xmark text-lg"></i></button>
       </div>
 
       <div id="chatMessages" class="flex-1 p-4 space-y-3 overflow-y-auto custom-scrollbar bg-slate-950/70">
@@ -513,17 +526,15 @@
 
       <div class="p-3 bg-slate-900 border-t border-slate-800 flex gap-2">
         <input type="text" id="chatInput" placeholder="Escribe tu mensaje de prueba..." onkeypress="if(event.key==='Enter') sendChatMessage()" class="flex-1 bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500">
-        <button onclick="sendChatMessage()" class="bg-blue-600 hover:bg-blue-500 text-white text-xs px-3.5 rounded-lg font-semibold">
-          <i class="fa-solid fa-paper-plane"></i>
-        </button>
+        <button onclick="sendChatMessage()" class="bg-blue-600 hover:bg-blue-500 text-white text-xs px-3.5 rounded-lg font-semibold"><i class="fa-solid fa-paper-plane"></i></button>
       </div>
     </div>
   </div>
 
   <script>
+    let activeChannelToConnect = "";
     let profiles = {
-      "recetas-demo": { name: "Recetario MasterChef & Repostería Pro", phone: "+51 987 654 321" },
-      "botica-demo": { name: "Farmacia & Botica San Martín", phone: "+51 912 345 678" }
+      "recetas-demo": { name: "Recetario MasterChef & Repostería Pro", phone: "+51 987 654 321" }
     };
     let currentProfileId = "recetas-demo";
 
@@ -534,50 +545,57 @@
     function renderProfileSelectors() {
       const selDesktop = document.getElementById("profileSelector");
       const selMobile = document.getElementById("profileSelectorMobile");
-      selDesktop.innerHTML = "";
-      selMobile.innerHTML = "";
+      selDesktop.innerHTML = ""; selMobile.innerHTML = "";
       Object.keys(profiles).forEach(id => {
-        const opt1 = document.createElement("option");
-        opt1.value = id; opt1.textContent = profiles[id].name;
+        const opt1 = document.createElement("option"); opt1.value = id; opt1.textContent = profiles[id].name;
         if (id === currentProfileId) opt1.selected = true;
         selDesktop.appendChild(opt1);
-        const opt2 = document.createElement("option");
-        opt2.value = id; opt2.textContent = profiles[id].name;
+        const opt2 = document.createElement("option"); opt2.value = id; opt2.textContent = profiles[id].name;
         if (id === currentProfileId) opt2.selected = true;
         selMobile.appendChild(opt2);
       });
     }
 
-    function switchProfile(id) {
-      currentProfileId = id;
-      renderProfileSelectors();
-    }
+    function switchProfile(id) { currentProfileId = id; renderProfileSelectors(); }
 
     function toggleBotStatus(isChecked) {
       const txt = document.getElementById("botStatusText");
-      if (isChecked) {
-        txt.textContent = "Respondiendo en automático";
-        txt.className = "text-[10px] text-emerald-400";
-      } else {
-        txt.textContent = "Bot pausado (Modo manual)";
-        txt.className = "text-[10px] text-amber-400";
+      if (isChecked) { txt.textContent = "Respondiendo en automático"; txt.className = "text-[10px] text-emerald-400"; }
+      else { txt.textContent = "Bot pausado (Modo manual)"; txt.className = "text-[10px] text-amber-400"; }
+    }
+
+    // GESTIÓN DE MODAL DE CONEXIÓN DE CELULAR Y CANALES
+    function openConnectModal(channelName) {
+      activeChannelToConnect = channelName;
+      document.getElementById("connectModalTitle").textContent = `Conectar y Vincular ${channelName}`;
+      document.getElementById("connectModalDesc").textContent = `Configura tu número de celular o credenciales oficiales para ${channelName}.`;
+      document.getElementById("inputLabelText").textContent = channelName === 'WhatsApp' || channelName === 'SMS' ? "Número de Celular Principal (+51...)" : "Token de API / Enlace de Cuenta";
+      document.getElementById("connectInputValue").value = channelName === 'WhatsApp' ? "+51 987 654 321" : "";
+      document.getElementById("connectModal").classList.remove("hidden");
+    }
+
+    function closeConnectModal() {
+      document.getElementById("connectModal").classList.add("hidden");
+    }
+
+    function confirmConnection() {
+      const val = document.getElementById("connectInputValue").value.trim();
+      if (!val) { alert("Por favor ingresa un número o token válido."); return; }
+      
+      if (activeChannelToConnect === 'WhatsApp') {
+        document.getElementById("waConnectedNumber").textContent = val;
+        document.getElementById("configuredPhoneText").textContent = `Número configurado: ${val}`;
       }
+      alert(`¡Canal ${activeChannelToConnect} conectado y vinculado exitosamente con el número ${val}!`);
+      closeConnectModal();
     }
 
-    function syncAllChannels() {
-      alert("¡Sincronización masiva completada! Los 6 canales están actualizados en tiempo real.");
+    function syncAllChannels() { alert("¡Sincronización masiva de todos los canales completada con éxito!"); }
+    function addNewQuickAnswer() { 
+      const q = prompt("Escribe la nueva pregunta frecuente:");
+      if (q) alert("¡Pregunta y respuesta agregada al entrenamiento de chat con éxito!");
     }
-
-    function addNewQuickAnswer() {
-      const pergunta = prompt("Escribe la nueva pregunta frecuente:");
-      if (pergunta) {
-        alert("¡Pregunta y respuesta agregada al entrenamiento automático del chat!");
-      }
-    }
-
-    function saveMessagingChanges() {
-      alert("¡Cambios de asistente de mensajería guardados y aplicados al instante en todos tus canales activos!");
-    }
+    function saveMessagingChanges() { alert("¡Cambios de asistente de mensajería guardados y aplicados al instante en todos tus canales activos!"); }
 
     function switchTab(tabId) {
       const tabs = ["profileTab", "messagingTab", "voiceTab", "paymentsTab", "adminTab"];
@@ -596,10 +614,7 @@
       }
     }
 
-    function toggleTestModal() {
-      const modal = document.getElementById("testModal");
-      modal.classList.toggle("hidden");
-    }
+    function toggleTestModal() { document.getElementById("testModal").classList.toggle("hidden"); }
 
     function sendChatMessage() {
       const input = document.getElementById("chatInput");

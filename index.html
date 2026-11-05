@@ -3,28 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EZRABOT - Asistente Omni-Canal Avanzado</title>
+  <title>EZRABOT - Asistente Omni-Channel Sales AI</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    .custom-scrollbar::-webkit-scrollbar {
-      width: 5px;
-    }
-    .custom-scrollbar::-webkit-scrollbar-track {
-      background: #0f172a;
-    }
-    .custom-scrollbar::-webkit-scrollbar-thumb {
-      background: #334155;
-      border-radius: 4px;
-    }
+    .custom-scrollbar::-webkit-scrollbar { width: 5px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: #0f172a; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
   </style>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col antialiased selection:bg-blue-600 selection:text-white">
 
-  <!-- ENCABEZADO SUPERIOR (PC & CELULAR) -->
+  <!-- ENCABEZADO SUPERIOR -->
   <header class="bg-slate-900/90 border-b border-slate-800 sticky top-0 z-40 backdrop-blur-md">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2">
-      
       <div class="flex items-center gap-3">
         <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center font-bold text-lg sm:text-xl text-white shadow-lg shadow-blue-500/20 shrink-0">
           <i class="fa-solid fa-robot"></i>
@@ -38,7 +30,7 @@
       <div class="hidden sm:flex items-center gap-2 bg-slate-950/80 px-3 py-1.5 rounded-lg border border-slate-800">
         <i class="fa-solid fa-store text-blue-400 text-xs"></i>
         <select id="profileSelector" onchange="switchProfile(this.value)" class="bg-transparent text-xs text-slate-200 font-medium focus:outline-none cursor-pointer pr-2">
-          <!-- Carga dinámica -->
+          <!-- Dinámico -->
         </select>
       </div>
 
@@ -47,40 +39,37 @@
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
           En línea y vendiendo
         </div>
-
         <button onclick="toggleTestModal()" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs px-3 sm:px-4 py-2 rounded-lg flex items-center gap-1.5 shadow-md shadow-blue-600/30 transition-all shrink-0">
           <i class="fa-solid fa-paper-plane text-xs"></i>
           <span>Probar en Vivo</span>
         </button>
-
         <button id="adminBtn" onclick="openLoginModal()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium text-xs px-2.5 sm:px-3 py-2 rounded-lg border border-slate-700 flex items-center gap-1.5 transition-all shrink-0">
           <i class="fa-solid fa-lock text-amber-400 text-xs"></i>
           <span id="adminBtnText" class="hidden sm:inline">Panel Admin</span>
         </button>
       </div>
     </div>
-
-    <!-- SELECTOR DE RUBRO EN PANTALLAS MÓVILES -->
+    
+    <!-- SELECTOR MÓVIL -->
     <div class="sm:hidden px-4 py-2 bg-slate-950 border-t border-slate-800/60 flex items-center gap-2">
       <span class="text-[11px] text-slate-400 font-medium shrink-0"><i class="fa-solid fa-store text-blue-400 mr-1"></i>Perfil:</span>
       <select id="profileSelectorMobile" onchange="switchProfile(this.value)" class="w-full bg-slate-900 text-xs text-slate-200 font-medium px-2 py-1 rounded border border-slate-800 focus:outline-none">
-        <!-- Carga dinámica -->
+        <!-- Dinámico -->
       </select>
     </div>
   </header>
 
   <div class="flex-1 max-w-7xl w-full mx-auto flex flex-col md:flex-row">
 
-    <!-- MENÚ NAVEGACIÓN LATERAL -->
+    <!-- MENÚ LATERAL -->
     <aside class="w-full md:w-64 bg-slate-900/40 border-b md:border-b-0 md:border-r border-slate-800/80 p-3 sm:p-4 shrink-0">
       <div class="hidden md:block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-3 px-2">CENTRO DE CONTROL</div>
-      
       <nav class="flex md:flex-col overflow-x-auto custom-scrollbar gap-1.5 pb-1 md:pb-0">
-        <button onclick="switchTab('profileTab')" id="nav-profileTab" class="flex-1 md:w-full flex items-center justify-center md:justify-start gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold whitespace-nowrap text-slate-400 hover:bg-slate-800/60 hover:text-slate-200 transition-all">
+        <button onclick="switchTab('profileTab')" id="nav-profileTab" class="flex-1 md:w-full flex items-center justify-center md:justify-start gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold whitespace-nowrap bg-blue-600 text-white shadow-sm transition-all">
           <i class="fa-solid fa-user-gear w-4 text-center"></i>
           <span>Creación de perfiles</span>
         </button>
-        <button onclick="switchTab('messagingTab')" id="nav-messagingTab" class="flex-1 md:w-full flex items-center justify-center md:justify-start gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold whitespace-nowrap bg-blue-600 text-white shadow-sm transition-all">
+        <button onclick="switchTab('messagingTab')" id="nav-messagingTab" class="flex-1 md:w-full flex items-center justify-center md:justify-start gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold whitespace-nowrap text-slate-400 hover:bg-slate-800/60 hover:text-slate-200 transition-all">
           <i class="fa-solid fa-comments w-4 text-center"></i>
           <span>Asistente de mensajería</span>
         </button>
@@ -93,485 +82,357 @@
           <span>Medios de Pago</span>
         </button>
         <button id="nav-adminTab" onclick="switchTab('adminTab')" class="hidden md:w-full items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/30 transition-all">
-          <span class="flex items-center gap-2">
-            <i class="fa-solid fa-user-shield w-4 text-center"></i>
-            <span>Gestión Admin</span>
-          </span>
+          <span class="flex items-center gap-2"><i class="fa-solid fa-user-shield w-4"></i> Gestión Admin</span>
           <i class="fa-solid fa-star text-[10px]"></i>
         </button>
       </nav>
     </aside>
 
-    <!-- ÁREA PRINCIPAL -->
+    <!-- CONTENIDO PRINCIPAL -->
     <main class="flex-1 p-4 sm:p-6 custom-scrollbar overflow-y-auto">
       
-      <!-- PESTAÑA 1: CREACIÓN DE PERFILES Y APRENDIZAJES -->
-      <section id="profileTab" class="hidden space-y-5">
+      <!-- 1. CREACIÓN DE PERFILES Y EVOLUCIÓN (CAPTURA 1) -->
+      <section id="profileTab" class="space-y-6">
         <div>
-          <div class="text-[10px] font-bold text-blue-400 uppercase tracking-widest">ARQUITECTURA DE NEGOCIOS • DESPLIEGUE INSTANTÁNEO</div>
+          <div class="text-[10px] font-bold text-blue-400 uppercase tracking-widest mb-0.5">ARQUITECTURA DE NEGOCIOS • DESPLIEGUE INSTANTÁNEO</div>
           <h2 class="text-xl sm:text-2xl font-extrabold text-white">Configura tu Perfil de Negocio</h2>
-          <p class="text-xs sm:text-sm text-slate-400 mt-0.5">Crea o edita la identidad de tu empresa y nutre la base de conocimiento central.</p>
+          <p class="text-xs sm:text-sm text-slate-400 mt-1">Crea o edita la identidad de tu empresa y nutre la base de conocimiento central[cite: 9].</p>
         </div>
 
         <div class="p-4 sm:p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
-          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-            <h3 class="text-sm sm:text-base font-bold text-slate-200">Datos Específicos del Negocio</h3>
-            <button onclick="saveCurrentProfile()" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs px-3.5 py-1.5 rounded-lg flex items-center gap-1.5">
-              <i class="fa-solid fa-floppy-disk"></i> Guardar Cambios
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-3 gap-2">
+            <div>
+              <span class="text-[10px] font-bold text-blue-400 uppercase tracking-widest">PERSONALIZACIÓN DE RUBRO</span>
+              <h3 class="text-sm sm:text-base font-bold text-slate-200">Seleccionar y Personalizar Rubro de Negocio[cite: 9]</h3>
+            </div>
+            <button onclick="saveCurrentProfile()" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs px-4 py-2 rounded-lg flex items-center gap-2 transition-all">
+              <i class="fa-solid fa-floppy-disk"></i> Guardar y Aplicar Base de Datos[cite: 9]
             </button>
           </div>
+
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
             <div>
-              <label class="block text-xs font-semibold text-slate-400 mb-1">Nombre Comercial del Negocio</label>
-              <input type="text" id="profName" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white">
+              <label class="block text-xs font-semibold text-slate-400 mb-1">Rubro / Sector Comercial[cite: 9]</label>
+              <select id="profRubro" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs sm:text-sm text-white">
+                <option value="recetas">Recetarios de Cocina / Repostería</option>
+                <option value="ebooks">Venta de E-books / Libros Digitales</option>
+                <option value="cursos">Educación / Cursos Digitales / Infoproductos</option>
+                <option value="afiliados">Marketing de Afiliados / Hotmart</option>
+                <option value="coaching">Coaching / Mentorías / Desarrollo Personal</option>
+                <option value="botica">Botica / Farmacia / Salud</option>
+                <option value="dental">Clínica Dental / Odontología</option>
+                <option value="comics">Tienda de Cómics & Coleccionables</option>
+                <option value="ecommerce">E-commerce / Tienda Online</option>
+              </select>
             </div>
             <div>
-              <label class="block text-xs font-semibold text-slate-400 mb-1">Teléfono / WhatsApp Principal</label>
-              <input type="text" id="profPhone" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white">
+              <label class="block text-xs font-semibold text-slate-400 mb-1">Nombre Comercial del Negocio[cite: 9]</label>
+              <input type="text" id="profName" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs sm:text-sm text-white">
             </div>
             <div>
-              <label class="block text-xs font-semibold text-slate-400 mb-1">Eslogan o Especialidad</label>
-              <input type="text" id="profSlogan" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white">
+              <label class="block text-xs font-semibold text-slate-400 mb-1">Slogan o Especialidad Principal[cite: 9]</label>
+              <input type="text" id="profSlogan" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs sm:text-sm text-white">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-400 mb-1">Horario y Cobertura[cite: 9]</label>
+              <input type="text" id="profHours" value="Atención automática 24/7 + Resistencia IA" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs sm:text-sm text-white">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-400 mb-1">Teléfono / WhatsApp Principal[cite: 9]</label>
+              <input type="text" id="profPhone" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs sm:text-sm text-white">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-400 mb-1">Enlace Web / Catálogo en la Nube[cite: 9]</label>
+              <input type="text" id="profCatalog" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs sm:text-sm text-white">
+            </div>
+            <div class="sm:col-span-2 lg:col-span-3">
+              <label class="block text-xs font-semibold text-slate-400 mb-1">Política de Precios & Moneda[cite: 9]</label>
+              <input type="text" id="profPolicies" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs sm:text-sm text-white">
+            </div>
+          </div>
+        </div>
+
+        <!-- EVOLUCIÓN E INTELIGENCIA ACTIVA -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+          <div class="lg:col-span-2 p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-3">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div>
+                <span class="text-[10px] font-bold text-amber-400 uppercase tracking-widest">FILTRO Y REGISTRO DE DUDAS NO RESUELTAS[cite: 9]</span>
+                <h3 class="text-sm sm:text-base font-bold text-slate-200">Preguntas e Indecisiones Registradas[cite: 9]</h3>
+              </div>
+              <span class="text-xs bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-3 py-1 rounded-lg font-semibold flex items-center gap-1.5">
+                Resueltas / Asimiladas (<span id="resolvedCount">12</span>)[cite: 9]
+              </span>
+            </div>
+            <div id="unresolvedList" class="space-y-2.5"></div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 flex flex-col justify-between space-y-4">
+            <div class="space-y-2">
+              <div class="flex items-center gap-2 text-blue-400">
+                <i class="fa-regular fa-lightbulb text-lg"></i>
+                <h4 class="text-xs font-extrabold uppercase tracking-wide text-white">CÓMO FUNCIONA LA EVOLUCIÓN[cite: 9]</h4>
+              </div>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Cada consulta no resuelta se registra automáticamente. Al añadir la respuesta, la IA asimila en menos de 60 segundos[cite: 9].
+              </p>
+            </div>
+            <div class="pt-3 border-t border-slate-800 space-y-2">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-bold text-slate-300">Tasa de resolución autónoma[cite: 9]</span>
+                <span class="font-extrabold text-blue-400" id="ratePercent">94.2%[cite: 9]</span>
+              </div>
+              <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                <div class="bg-blue-500 h-full rounded-full" style="width: 94.2%;"></div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- PESTAÑA 2: ASISTENTE DE MENSAJERÍA (100% IDÉNTICO A LAS CAPTURAS) -->
-      <section id="messagingTab" class="space-y-6">
-        
-        <!-- INTELIGENCIA ACTIVA 24/7 -->
+      <!-- 2. ASISTENTE DE MENSAJERÍA (CAPTURAS 2 Y 3) -->
+      <section id="messagingTab" class="hidden space-y-6">
         <div class="p-5 sm:p-6 rounded-2xl bg-slate-900/60 border border-slate-800 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div class="space-y-1">
-            <div class="text-[10px] font-bold text-blue-400 uppercase tracking-widest">INTELIGENCIA ACTIVA 24/7</div>
-            <h2 class="text-xl sm:text-2xl font-extrabold text-white">Tu Asistente por Chat</h2>
+            <div class="text-[10px] font-bold text-blue-400 uppercase tracking-widest">INTELIGENCIA ACTIVA 24/7[cite: 9]</div>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-white">Tu Asistente por Chat[cite: 9]</h2>
             <p class="text-xs sm:text-sm text-slate-400 max-w-2xl">
-              Responde dudas al instante, recomienda productos y envía el enlace de compra automáticamente las 24 horas del día sin perder ninguna venta.
+              Responde dudas al instante, recomienda productos y envía el enlace de compra automáticamente las 24 horas del día[cite: 9].
             </p>
           </div>
-          
           <div class="bg-slate-950 px-4 py-3 rounded-xl border border-slate-800 flex items-center gap-3 shrink-0">
             <div class="flex flex-col text-right">
-              <span class="text-xs font-bold text-white">ESTADO DEL BOT</span>
-              <span class="text-[10px] text-emerald-400" id="botStatusText">Respondiendo en automático</span>
+              <span class="text-xs font-bold text-white">ESTADO DEL BOT[cite: 9]</span>
+              <span class="text-[10px] text-emerald-400" id="botStatusText">Respondiendo en automático[cite: 9]</span>
             </div>
-            <label class="relative inline-flex items-center cursor-pointer">
-              <input type="checkbox" id="botActiveToggle" onchange="toggleBotStatus(this.checked)" class="sr-only peer" checked>
-              <div class="w-11 h-6 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
-            </label>
-            <span class="text-[11px] text-slate-400">Pausar para responder tú mismo</span>
+            <input type="checkbox" id="botActiveToggle" onchange="toggleBotStatus(this.checked)" class="w-5 h-5 accent-blue-600 cursor-pointer" checked>
           </div>
         </div>
 
         <!-- CANALES CONECTADOS -->
         <div class="space-y-3">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-            <div>
-              <h3 class="text-sm font-bold text-white">Canales Conectados</h3>
-              <p class="text-xs text-slate-400">Gestiona la vinculación y sincronización de clientes con botones directos para cada plataforma.</p>
-            </div>
-            <div class="flex items-center gap-2">
-              <button onclick="syncAllChannels()" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 px-3 py-1.5 rounded-lg flex items-center gap-1.5">
-                <i class="fa-solid fa-rotate text-blue-400"></i> Sincronizar Todas
-              </button>
-              <button class="text-xs bg-slate-800/60 text-slate-400 border border-slate-800 px-3 py-1.5 rounded-lg">
-                6 Canales Disponibles
-              </button>
-            </div>
+          <div class="flex items-center justify-between">
+            <h3 class="text-sm font-bold text-white">Canales Conectados[cite: 9]</h3>
+            <button onclick="syncAllChannels()" class="text-xs bg-slate-800 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700">Sincronizar Todas[cite: 9]</button>
           </div>
-
-          <!-- GRID DE 6 CANALES -->
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            
             <!-- SMS -->
-            <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-3 flex flex-col justify-between">
-              <div class="flex items-start justify-between">
-                <div class="flex items-center gap-2.5">
-                  <div class="w-8 h-8 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center text-sm">
-                    <i class="fa-solid fa-comment-sms"></i>
-                  </div>
-                  <div>
-                    <div class="text-xs font-bold text-white">Mensajes de Celular (SMS)</div>
-                    <div class="text-[10px] text-slate-400">Línea directa SMS & Operadores</div>
-                  </div>
-                </div>
-                <span class="text-[10px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded font-semibold">Activo</span>
-              </div>
-              <div class="text-[11px] text-slate-400">14 SMS atendidos hoy en tiempo real</div>
-              <div class="flex items-center gap-2 pt-2 border-t border-slate-800">
-                <button onclick="openConnectModal('SMS')" class="flex-1 bg-blue-600 hover:bg-blue-500 text-white text-[11px] font-semibold py-1.5 rounded-lg">Conectar SMS</button>
-                <button onclick="alert('Sincronizando pasarela SMS...')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] px-3 py-1.5 rounded-lg"><i class="fa-solid fa-rotate"></i> Sincronizar</button>
-              </div>
+            <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-3">
+              <div class="flex justify-between items-center"><span class="text-xs font-bold text-white">Mensajes de Celular (SMS)[cite: 9]</span><span class="text-[10px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded">Activo[cite: 9]</span></div>
+              <button onclick="openConnectModal('SMS')" class="w-full bg-blue-600 hover:bg-blue-500 text-white text-xs py-1.5 rounded-lg">Conectar SMS[cite: 9]</button>
             </div>
-
-            <!-- TELEGRAM -->
-            <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-3 flex flex-col justify-between">
-              <div class="flex items-start justify-between">
-                <div class="flex items-center gap-2.5">
-                  <div class="w-8 h-8 rounded-lg bg-sky-500/10 text-sky-400 flex items-center justify-center text-sm">
-                    <i class="fa-brands fa-telegram"></i>
-                  </div>
-                  <div>
-                    <div class="text-xs font-bold text-white">Telegram</div>
-                    <div class="text-[10px] text-slate-400">@ezraba_bot</div>
-                  </div>
-                </div>
-                <span class="text-[10px] bg-blue-500/10 text-blue-400 px-2 py-0.5 rounded font-semibold">Conectado</span>
-              </div>
-              <div class="text-[11px] text-slate-400">21 personas chateando en línea</div>
-              <div class="flex items-center gap-2 pt-2 border-t border-slate-800">
-                <button onclick="openConnectModal('Telegram')" class="flex-1 bg-sky-600 hover:bg-sky-500 text-white text-[11px] font-semibold py-1.5 rounded-lg">Vincular Telegram</button>
-                <button onclick="alert('Sincronizando Telegram...')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] px-3 py-1.5 rounded-lg"><i class="fa-solid fa-rotate"></i> Sincronizar</button>
-              </div>
+            <!-- Telegram -->
+            <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-3">
+              <div class="flex justify-between items-center"><span class="text-xs font-bold text-white">Telegram[cite: 9]</span><span class="text-[10px] bg-blue-500/10 text-blue-400 px-2 py-0.5 rounded">Conectado[cite: 9]</span></div>
+              <button onclick="openConnectModal('Telegram')" class="w-full bg-sky-600 hover:bg-sky-500 text-white text-xs py-1.5 rounded-lg">Vincular Telegram[cite: 9]</button>
             </div>
-
-            <!-- FACEBOOK MESSENGER -->
-            <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-3 flex flex-col justify-between">
-              <div class="flex items-start justify-between">
-                <div class="flex items-center gap-2.5">
-                  <div class="w-8 h-8 rounded-lg bg-blue-600/10 text-blue-500 flex items-center justify-center text-sm">
-                    <i class="fa-brands fa-facebook-messenger"></i>
-                  </div>
-                  <div>
-                    <div class="text-xs font-bold text-white">Facebook Messenger</div>
-                    <div class="text-[10px] text-slate-400">Página de Facebook Oficial</div>
-                  </div>
-                </div>
-                <span class="text-[10px] bg-blue-500/10 text-blue-400 px-2 py-0.5 rounded font-semibold">Conectado</span>
-              </div>
-              <div class="text-[11px] text-slate-400">27 conversaciones activas</div>
-              <div class="flex items-center gap-2 pt-2 border-t border-slate-800">
-                <button onclick="openConnectModal('Facebook')" class="flex-1 bg-blue-600 hover:bg-blue-500 text-white text-[11px] font-semibold py-1.5 rounded-lg">Vincular Facebook</button>
-                <button onclick="alert('Sincronizando Facebook...')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] px-3 py-1.5 rounded-lg"><i class="fa-solid fa-rotate"></i> Sincronizar</button>
-              </div>
+            <!-- Facebook -->
+            <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-3">
+              <div class="flex justify-between items-center"><span class="text-xs font-bold text-white">Facebook Messenger[cite: 9]</span><span class="text-[10px] bg-blue-500/10 text-blue-400 px-2 py-0.5 rounded">Conectado[cite: 9]</span></div>
+              <button onclick="openConnectModal('Facebook')" class="w-full bg-blue-600 hover:bg-blue-500 text-white text-xs py-1.5 rounded-lg">Vincular Facebook[cite: 9]</button>
             </div>
-
-            <!-- WHATSAPP BUSINESS -->
-            <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-3 flex flex-col justify-between">
-              <div class="flex items-start justify-between">
-                <div class="flex items-center gap-2.5">
-                  <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-sm">
-                    <i class="fa-brands fa-whatsapp"></i>
-                  </div>
-                  <div>
-                    <div class="text-xs font-bold text-white">WhatsApp Business</div>
-                    <div class="text-[10px] text-slate-400" id="waConnectedNumber">+51 987 654 321</div>
-                  </div>
-                </div>
-                <span class="text-[10px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded font-semibold">En vivo</span>
-              </div>
-              <div class="text-[11px] text-slate-400">48 personas atendidas hoy</div>
-              <div class="flex items-center gap-2 pt-2 border-t border-slate-800">
-                <button onclick="openConnectModal('WhatsApp')" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white text-[11px] font-semibold py-1.5 rounded-lg">Conectar WhatsApp</button>
-                <button onclick="alert('Sincronizando WhatsApp...')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] px-3 py-1.5 rounded-lg"><i class="fa-solid fa-rotate"></i> Sincronizar</button>
-              </div>
+            <!-- WhatsApp -->
+            <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-3">
+              <div class="flex justify-between items-center"><span class="text-xs font-bold text-white">WhatsApp Business[cite: 9]</span><span class="text-[10px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded">En vivo[cite: 9]</span></div>
+              <button onclick="openConnectModal('WhatsApp')" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white text-xs py-1.5 rounded-lg">Conectar WhatsApp[cite: 9]</button>
             </div>
-
-            <!-- INSTAGRAM DIRECT -->
-            <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-3 flex flex-col justify-between">
-              <div class="flex items-start justify-between">
-                <div class="flex items-center gap-2.5">
-                  <div class="w-8 h-8 rounded-lg bg-pink-500/10 text-pink-400 flex items-center justify-center text-sm">
-                    <i class="fa-brands fa-instagram"></i>
-                  </div>
-                  <div>
-                    <div class="text-xs font-bold text-white">Instagram Direct</div>
-                    <div class="text-[10px] text-slate-400">@tienda_oficial</div>
-                  </div>
-                </div>
-                <span class="text-[10px] bg-pink-500/10 text-pink-400 px-2 py-0.5 rounded font-semibold">En vivo</span>
-              </div>
-              <div class="text-[11px] text-slate-400">19 mensajes atendidos</div>
-              <div class="flex items-center gap-2 pt-2 border-t border-slate-800">
-                <button onclick="openConnectModal('Instagram')" class="flex-1 bg-pink-600 hover:bg-pink-500 text-white text-[11px] font-semibold py-1.5 rounded-lg">Conectar Instagram</button>
-                <button onclick="alert('Sincronizando Instagram...')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] px-3 py-1.5 rounded-lg"><i class="fa-solid fa-rotate"></i> Sincronizar</button>
-              </div>
+            <!-- Instagram -->
+            <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-3">
+              <div class="flex justify-between items-center"><span class="text-xs font-bold text-white">Instagram Direct[cite: 9]</span><span class="text-[10px] bg-pink-500/10 text-pink-400 px-2 py-0.5 rounded">En vivo[cite: 9]</span></div>
+              <button onclick="openConnectModal('Instagram')" class="w-full bg-pink-600 hover:bg-pink-500 text-white text-xs py-1.5 rounded-lg">Conectar Instagram[cite: 9]</button>
             </div>
-
-            <!-- CHAT EN SITIO WEB -->
-            <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-3 flex flex-col justify-between">
-              <div class="flex items-start justify-between">
-                <div class="flex items-center gap-2.5">
-                  <div class="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-sm">
-                    <i class="fa-solid fa-globe"></i>
-                  </div>
-                  <div>
-                    <div class="text-xs font-bold text-white">Chat en Sitio Web</div>
-                    <div class="text-[10px] text-slate-400">Widget Activo para Tienda</div>
-                  </div>
-                </div>
-                <span class="text-[10px] bg-indigo-500/10 text-indigo-400 px-2 py-0.5 rounded font-semibold">En vivo</span>
-              </div>
-              <div class="text-[11px] text-slate-400">Listo para recibir clientes</div>
-              <div class="flex items-center gap-2 pt-2 border-t border-slate-800">
-                <button onclick="openConnectModal('Widget Web')" class="flex-1 bg-indigo-600 hover:bg-indigo-500 text-white text-[11px] font-semibold py-1.5 rounded-lg">&lt;&gt; Conectar Widget</button>
-                <button onclick="alert('Sincronizando Web...')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] px-3 py-1.5 rounded-lg"><i class="fa-solid fa-rotate"></i> Sincronizar</button>
-              </div>
+            <!-- Web -->
+            <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-3">
+              <div class="flex justify-between items-center"><span class="text-xs font-bold text-white">Chat en Sitio Web[cite: 9]</span><span class="text-[10px] bg-indigo-500/10 text-indigo-400 px-2 py-0.5 rounded">En vivo[cite: 9]</span></div>
+              <button onclick="openConnectModal('Widget Web')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white text-xs py-1.5 rounded-lg">Conectar Widget[cite: 9]</button>
             </div>
-
           </div>
         </div>
 
-        <!-- RESPUESTAS AUTOMATIZADAS Y CONFIGURACIÓN DE TONO -->
+        <!-- RESPUESTAS Y TONO -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          
           <div class="lg:col-span-2 p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
             <div class="flex items-center justify-between">
-              <div>
-                <span class="text-[10px] font-bold text-blue-400 uppercase tracking-widest">RESPUESTAS AUTOMATIZADAS</span>
-                <h3 class="text-sm sm:text-base font-bold text-slate-200">Entrena tu Asistente de Mensajes & Respuestas Rápidas</h3>
-              </div>
-              <button onclick="addNewQuickAnswer()" class="text-xs bg-blue-600 hover:bg-blue-500 text-white px-3 py-1.5 rounded-lg font-semibold flex items-center gap-1 shadow-sm">
-                <i class="fa-solid fa-plus"></i> Nueva Respuesta
+              <h3 class="text-sm font-bold text-slate-200">Entrena tu Asistente de Mensajes & Respuestas Rápidas[cite: 9]</h3>
+              <button onclick="addNewQuickAnswer()" class="text-xs bg-blue-600 text-white px-3 py-1.5 rounded-lg">+ Nueva Respuesta[cite: 9]</button>
+            </div>
+            <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
+              <div class="text-xs font-bold text-white">¿Cuáles son los medios de pago y costos de envío?[cite: 9]</div>
+              <p class="text-xs text-slate-400">Aceptamos tarjetas, transferencia y MercadoPago. Envíos gratis sobre $50[cite: 9].</p>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-3">
+            <h3 class="text-sm font-bold text-slate-200">Personalidad del Asistente[cite: 9]</h3>
+            <label class="block text-xs"><input type="radio" name="toneChoice" checked> Ásilo y sonriente (Usa emojis con sutileza)[cite: 9]</label>
+            <label class="block text-xs"><input type="radio" name="toneChoice"> Formal y ejecutivo (Sobria y precisa)[cite: 9]</label>
+            <label class="block text-xs"><input type="radio" name="toneChoice"> Corto y al grano (Directo a precios y enlaces)[cite: 9]</label>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. ASISTENTE DE LLAMADAS (CAPTURA 4) -->
+      <section id="voiceTab" class="hidden space-y-6">
+        <div class="p-5 sm:p-6 rounded-2xl bg-slate-900/60 border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div>
+            <div class="text-[10px] font-bold text-blue-400 uppercase tracking-widest">CANAL DE VOZ HUMANA • LÍNEA TELEFÓNICA ACTIVA 24/7[cite: 11]</div>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-white">Tu Asistente de Voz por Teléfono[cite: 11]</h2>
+            <p class="text-xs text-slate-400 mt-1">Atiende llamadas entrantes, responde preguntas con voz humana y cierra ventas sin que pierdas ninguna llamada[cite: 11].</p>
+          </div>
+          <div class="bg-slate-950 px-4 py-3 rounded-xl border border-slate-800 text-center">
+            <span class="text-xs font-bold text-white block">ESTADO DE LA CENTRAL[cite: 11]</span>
+            <span class="text-[10px] text-emerald-400 flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Disponible para recibir llamadas[cite: 11]</span>
+          </div>
+        </div>
+
+        <!-- CONFIGURACIÓN DE VOZ Y CONTROL -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
+            <h3 class="text-sm font-bold text-white">Elige la voz de tu Asistente[cite: 11]</h3>
+            <div class="grid grid-cols-3 gap-2">
+              <button onclick="selectVoice('Camila')" class="p-3 bg-blue-600/20 border border-blue-500 rounded-xl text-center text-xs font-bold text-white">Camila <br><span class="text-[9px] text-slate-400">Cálida y amigable[cite: 11]</span></button>
+              <button onclick="selectVoice('Mateo')" class="p-3 bg-slate-950 border border-slate-800 rounded-xl text-center text-xs font-bold text-white">Mateo <br><span class="text-[9px] text-slate-400">Enérgico[cite: 11]</span></button>
+              <button onclick="selectVoice('Sofía')" class="p-3 bg-slate-950 border border-slate-800 rounded-xl text-center text-xs font-bold text-white">Sofía <br><span class="text-[9px] text-slate-400">Profesional[cite: 11]</span></button>
+            </div>
+
+            <div class="space-y-2 pt-2">
+              <label class="block text-xs font-semibold text-slate-300">Descuento máximo autorizado: <span id="discountVal" class="text-blue-400 font-bold">10%</span>[cite: 11]</label>
+              <input type="range" min="0" max="25" value="10" oninput="document.getElementById('discountVal').textContent = this.value + '%'" class="w-full accent-blue-600">
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4 flex flex-col justify-between">
+            <div>
+              <span class="text-[10px] font-bold text-amber-400 uppercase tracking-widest">TOMA AL TIMÓN CUANDO QUIERAS[cite: 11]</span>
+              <h3 class="text-sm font-bold text-white">Control de 1 Clic para el Dueño[cite: 11]</h3>
+              <p class="text-xs text-slate-400 mt-1">Acciones instantáneas mientras tu asistente atiende la llamada[cite: 11].</p>
+            </div>
+            <div class="space-y-2">
+              <button onclick="alert('Transfiriendo llamada a tu celular...')" class="w-full bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold py-2.5 rounded-lg flex items-center justify-center gap-2">
+                <i class="fa-solid fa-phone"></i> Hablar yo en la llamada[cite: 11]
+              </button>
+              <button onclick="alert('Enlace de pago enviado por WhatsApp al cliente.')" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold py-2.5 rounded-lg flex items-center justify-center gap-2">
+                <i class="fa-brands fa-whatsapp text-emerald-400"></i> Enviar enlace de pago por WhatsApp[cite: 11]
               </button>
             </div>
-            <p class="text-xs text-slate-400">Configura cómo debe responder tu bot ante preguntas frecuentes de tus clientes:</p>
+          </div>
+        </div>
+      </section>
 
+      <!-- 4. MEDIOS DE PAGO Y COBROS (CAPTURA 5) -->
+      <section id="paymentsTab" class="hidden space-y-6">
+        <div class="p-5 sm:p-6 rounded-2xl bg-slate-900/60 border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div>
+            <div class="text-[10px] font-bold text-blue-400 uppercase tracking-widest">TESORERÍA & DISTRIBUCIÓN AUTOMATIZADA • MÓDULO VENTA RÁPIDA[cite: 12]</div>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-white">Medios de Pago y Cobros Fáciles[cite: 12]</h2>
+            <p class="text-xs sm:text-sm text-slate-400 mt-1">Conecta cómo quieres cobrar. El Asistente genera los links y cobra automáticamente durante el chat o la llamada[cite: 12].</p>
+          </div>
+          <div class="flex gap-3">
+            <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-center text-xs">
+              <span class="text-blue-400 font-bold block text-sm">Menor a 3 seg[cite: 12]</span> Entrega
+            </div>
+            <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-center text-xs">
+              <span class="text-emerald-400 font-bold block text-sm">100%[cite: 12]</span> Validación Bot
+            </div>
+          </div>
+        </div>
+
+        <!-- PASARELAS Y PRODUCTOS -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <!-- Pasarelas -->
+          <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
+            <div class="flex justify-between items-center"><h3 class="text-sm font-bold text-white">Pasarelas de Pago Listas[cite: 12]</h3><span class="text-xs bg-blue-500/10 text-blue-400 px-2.5 py-0.5 rounded font-semibold">3 Activas[cite: 12]</span></div>
+            
             <div class="space-y-3">
-              <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
-                <div class="flex items-center justify-between">
-                  <span class="text-xs font-bold text-slate-200">Pregunta: ¿Cuáles son los medios de pago y costos de envío?</span>
-                  <span class="text-[10px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded font-semibold">Activa</span>
-                </div>
-                <p class="text-xs text-slate-400 bg-slate-900/80 p-2.5 rounded-lg border border-slate-800">
-                  "Aceptamos todas las tarjetas de crédito, débito, transferencia y Mercado Pago. Envíos gratis a todo el país en compras mayores a $50."
-                </p>
+              <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800 flex justify-between items-center">
+                <div><div class="text-xs font-bold text-white">MercadoPago / Tarjetas Locales[cite: 12]</div><div class="text-[10px] text-slate-400">Cobros en pesos y hasta 12 cuotas[cite: 12]</div></div>
+                <input type="checkbox" checked class="w-4 h-4 accent-blue-600">
               </div>
-
-              <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
-                <div class="flex items-center justify-between">
-                  <span class="text-xs font-bold text-slate-200">Pregunta: ¿Tienen stock disponible y tiempos de entrega?</span>
-                  <span class="text-[10px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded font-semibold">Activa</span>
-                </div>
-                <p class="text-xs text-slate-400 bg-slate-900/80 p-2.5 rounded-lg border border-slate-800">
-                  "¡Sí! Todo nuestro catálogo web cuenta con stock garantizado. Despachamos en menos de 24 horas hábiles a tu domicilio."
-                </p>
+              <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800 flex justify-between items-center">
+                <div><div class="text-xs font-bold text-white">Stripe / Tarjetas Globales[cite: 12]</div><div class="text-[10px] text-slate-400">Visa, Mastercard, Apple Pay[cite: 12]</div></div>
+                <input type="checkbox" checked class="w-4 h-4 accent-blue-600">
               </div>
-
-              <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
-                <div class="flex items-center justify-between">
-                  <span class="text-xs font-bold text-slate-200">Pregunta: ¿Cómo solicito un cambio o garantía?</span>
-                  <span class="text-[10px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded font-semibold">Activa</span>
-                </div>
-                <p class="text-xs text-slate-400 bg-slate-900/80 p-2.5 rounded-lg border border-slate-800">
-                  "Tienes 30 días de cambio directo. Indícanos tu número de orden y te enviaremos la etiqueta de devolución sin costo."
-                </p>
+              <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800 flex justify-between items-center">
+                <div><div class="text-xs font-bold text-white">Transferencia Bancaria Inmediata[cite: 12]</div><div class="text-[10px] text-slate-400">OCR Asistido por Alias / CBU[cite: 12]</div></div>
+                <input type="checkbox" checked class="w-4 h-4 accent-blue-600">
               </div>
             </div>
           </div>
 
-          <div class="space-y-6">
-            <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
-              <div>
-                <span class="text-[10px] font-bold text-blue-400 uppercase tracking-widest">CONFIGURACIÓN DE TONO</span>
-                <h3 class="text-sm font-bold text-slate-200">Personalidad del Asistente</h3>
+          <!-- Productos -->
+          <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
+            <div class="flex justify-between items-center"><h3 class="text-sm font-bold text-white">Tus Productos para Venta Rápidas[cite: 12]</h3><button onclick="addNewProduct()" class="text-xs bg-blue-600 text-white px-3 py-1.5 rounded-lg">+ Agregar Producto[cite: 12]</button></div>
+            
+            <div class="space-y-3" id="productList">
+              <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800 flex justify-between items-center">
+                <div><div class="text-xs font-bold text-white">Ebook / Manual en PDF de Emprendimiento[cite: 12]</div><div class="text-[10px] text-emerald-400">$15 USD / $15.000 ARS • Entrega automática[cite: 12]</div></div>
+                <button class="text-xs text-slate-400 hover:text-white"><i class="fa-solid fa-pen"></i></button>
               </div>
-              <p class="text-xs text-slate-400">Adapta la forma en que tu bot se comunica con tus clientes.</p>
-
-              <div class="space-y-3">
-                <label class="flex items-start gap-3 p-2.5 rounded-xl bg-slate-950 border border-slate-800 cursor-pointer hover:border-blue-500/50">
-                  <input type="radio" name="toneChoice" checked class="mt-0.5 text-blue-600">
-                  <div class="space-y-0.5">
-                    <div class="text-xs font-bold text-white">Ásilo y sonriente</div>
-                    <div class="text-[10px] text-slate-400">Usa emojis con sutileza, celebra el interés y genera confianza al instante[cite: 6].</div>
-                  </div>
-                </label>
-
-                <label class="flex items-start gap-3 p-2.5 rounded-xl bg-slate-950 border border-slate-800 cursor-pointer hover:border-blue-500/50">
-                  <input type="radio" name="toneChoice" class="mt-0.5 text-blue-600">
-                  <div class="space-y-0.5">
-                    <div class="text-xs font-bold text-white">Formal y ejecutivo</div>
-                    <div class="text-[10px] text-slate-400">Voz corporativa, sobria, precisa y con trato de cortesía tradicional[cite: 6].</div>
-                  </div>
-                </label>
-
-                <label class="flex items-start gap-3 p-2.5 rounded-xl bg-slate-950 border border-slate-800 cursor-pointer hover:border-blue-500/50">
-                  <input type="radio" name="toneChoice" class="mt-0.5 text-blue-600">
-                  <div class="space-y-0.5">
-                    <div class="text-xs font-bold text-white">Corto y al grano</div>
-                    <div class="text-[10px] text-slate-400">Directo a la información crítica de precios, envíos y enlaces en 1 frase[cite: 6].</div>
-                  </div>
-                </label>
+              <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800 flex justify-between items-center">
+                <div><div class="text-xs font-bold text-white">Pack de Cómics / Manga Digital[cite: 12]</div><div class="text-[10px] text-emerald-400">$9 USD / $9.000 ARS • Enlace protegido[cite: 12]</div></div>
+                <button class="text-xs text-slate-400 hover:text-white"><i class="fa-solid fa-pen"></i></button>
               </div>
             </div>
-
-            <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-3">
-              <div class="flex items-center justify-between">
-                <h3 class="text-xs font-bold text-white">Traspaso Inteligente a Celular Personal</h3>
-                <i class="fa-solid fa-headset text-amber-400"></i>
-              </div>
-              <p class="text-[11px] text-slate-400">Derivación automática sin fricción ni abandono.</p>
-              
-              <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-1.5">
-                <div class="flex items-center justify-between text-xs">
-                  <span class="font-bold text-slate-300">Alerta sonora y notificación inmediata</span>
-                  <input type="checkbox" checked class="rounded text-blue-600">
-                </div>
-                <p class="text-[10px] text-slate-400">Cuando el cliente solicite hablar con una persona o formule una consulta personalizada, recibirá una notificación directa en tu móvil para responder con un solo toque[cite: 6].</p>
-                <div class="pt-1 text-[11px] text-blue-400 font-semibold" id="configuredPhoneText">Número configurado: +51 987 654 321</div>
-              </div>
-            </div>
-
           </div>
-
         </div>
-
-        <!-- OFERTAS Y CATÁLOGO / BOTÓN DE GUARDAR GLOBAL -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
-          
-          <div class="lg:col-span-2 p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-3">
-            <div class="flex items-center justify-between">
-              <div>
-                <span class="text-[10px] font-bold text-blue-400 uppercase tracking-widest">OFERTAS Y CATÁLOGO</span>
-                <h3 class="text-sm font-bold text-white">Promociones, Descuentos y Paquete Completo</h3>
-              </div>
-              <button onclick="alert('Creador de promociones activo')" class="text-xs bg-blue-600 hover:bg-blue-500 text-white px-3 py-1.5 rounded-lg font-semibold">
-                + Crear Promoción
-              </button>
-            </div>
-            <p class="text-xs text-slate-400">El bot ofrecerá estas promociones de forma automática para aumentar el ticket promedio.</p>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
-                <div class="flex items-center justify-between text-xs font-bold text-white">
-                  <span>Pack Destacado de Temporada</span>
-                  <span class="text-[10px] bg-pink-500/10 text-pink-400 px-2 py-0.5 rounded">15% OFF</span>
-                </div>
-                <p class="text-[11px] text-slate-400">Enlace de pago exprés generado automáticamente ante consultas de compra o recomendación.</p>
-                <div class="flex justify-between items-center pt-1 text-[10px] text-slate-500">
-                  <span class="text-blue-400 font-bold">$10 USD / S/.10.00 ARG</span>
-                  <span>Vigente</span>
-                </div>
-              </div>
-
-              <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
-                <div class="flex items-center justify-between text-xs font-bold text-white">
-                  <span>Descuento Primera Compra</span>
-                  <span class="text-[10px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded">10% OFF</span>
-                </div>
-                <p class="text-[11px] text-slate-400">Se envía si el cliente tiene dudas de precio para acelerar el cierre.</p>
-                <div class="flex justify-between items-center pt-1 text-[10px] text-slate-500">
-                  <span class="text-emerald-400 font-bold">CÓDIGO: BIENVENIDO10</span>
-                  <span>Automático</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="flex flex-col justify-center space-y-2">
-            <button onclick="saveMessagingChanges()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm py-3.5 rounded-xl shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2 transition-all">
-              <i class="fa-solid fa-floppy-disk"></i> Guardar Cambios de Asistente
-            </button>
-            <p class="text-[10px] text-center text-slate-400">Los cambios se aplican al instante en todos tus canales activos.</p>
-          </div>
-
-        </div>
-
       </section>
 
-      <!-- OTROS MÓDULOS DEL SISTEMA -->
-      <section id="voiceTab" class="hidden space-y-5">
-        <h2 class="text-xl sm:text-2xl font-extrabold text-white">Asistente de Llamadas por Voz IA</h2>
-      </section>
-      <section id="paymentsTab" class="hidden space-y-5">
-        <h2 class="text-xl sm:text-2xl font-extrabold text-white">Medios de Pago y Cobro</h2>
-      </section>
+      <!-- 5. GESTIÓN ADMIN -->
       <section id="adminTab" class="hidden space-y-5">
-        <h2 class="text-xl sm:text-2xl font-extrabold text-white">Panel de Administración</h2>
+        <h2 class="text-xl font-bold text-white">Panel de Administración Maestro</h2>
+        <div class="p-5 bg-slate-900 rounded-xl border border-slate-800 space-y-3">
+          <h3 class="text-sm font-bold text-slate-200">Perfiles Registrados en el Sistema</h3>
+          <div id="adminProfilesList" class="space-y-2"></div>
+        </div>
       </section>
 
     </main>
   </div>
 
-  <!-- MODAL PARA CONECTAR Y VINCULAR CANALES -->
+  <!-- MODAL DE CONEXIÓN DE CANALES -->
   <div id="connectModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 max-w-md w-full space-y-4 shadow-2xl">
       <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-        <div class="flex items-center gap-2">
-          <div class="w-8 h-8 rounded-lg bg-blue-600/20 text-blue-400 flex items-center justify-center text-sm font-bold">
-            <i class="fa-solid fa-link"></i>
-          </div>
-          <h3 class="text-sm font-bold text-white" id="connectModalTitle">Conectar Canal</h3>
-        </div>
+        <h3 class="text-sm font-bold text-white" id="connectModalTitle">Conectar Canal[cite: 9]</h3>
         <button onclick="closeConnectModal()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
       </div>
-
       <div class="space-y-3 text-xs text-slate-300">
-        <p id="connectModalDesc">Ingresa los datos de vinculación oficial para habilitar este canal en tiempo real.</p>
-        <div>
-          <label class="block font-semibold text-slate-400 mb-1" id="inputLabelText">Número de Celular / Token de API</label>
-          <input type="text" id="connectInputValue" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-white text-xs focus:outline-none focus:border-blue-500" placeholder="+51 987 654 321">
-        </div>
-        <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 text-[11px] text-slate-400 space-y-1">
-          <div class="font-bold text-slate-300">Pasos de vinculación segura:</div>
-          <p>1. Introduce tu número principal o token de acceso.</p>
-          <p>2. Haz clic en vincular para sincronizar con EZRABOT.</p>
-        </div>
+        <p id="connectModalDesc">Ingresa el número o token oficial[cite: 9].</p>
+        <input type="text" id="connectInputValue" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-white text-xs" placeholder="+51 987 654 321">
       </div>
-
       <div class="flex gap-2 pt-2">
-        <button onclick="closeConnectModal()" class="w-1/2 bg-slate-800 text-slate-300 font-semibold py-2 rounded-lg">Cancelar</button>
-        <button onclick="confirmConnection()" class="w-1/2 bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 rounded-lg">Vincular Ahora</button>
+        <button onclick="closeConnectModal()" class="w-1/2 bg-slate-800 text-slate-300 font-semibold py-2 rounded-lg">Cancelar[cite: 9]</button>
+        <button onclick="confirmConnection()" class="w-1/2 bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 rounded-lg">Vincular Ahora[cite: 9]</button>
       </div>
     </div>
   </div>
 
-  <!-- MODAL DE ACCESO PANEL ADMIN (admin / ezrabot2026) -->
+  <!-- MODAL ADMIN -->
   <div id="loginModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 max-w-sm w-full space-y-4 shadow-2xl">
-      <div class="text-center space-y-1">
-        <div class="w-10 h-10 bg-amber-500/10 text-amber-400 rounded-full flex items-center justify-center mx-auto text-lg border border-amber-500/20">
-          <i class="fa-solid fa-lock"></i>
-        </div>
-        <h3 class="text-base font-bold text-white">Acceso al Panel Oculto</h3>
-        <p class="text-xs text-slate-400">Credenciales del Administrador Maestro</p>
-      </div>
-
-      <div class="space-y-3">
-        <div>
-          <label class="block text-xs font-semibold text-slate-400 mb-1">Usuario</label>
-          <input type="text" id="adminUser" value="admin" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white">
-        </div>
-        <div>
-          <label class="block text-xs font-semibold text-slate-400 mb-1">Contraseña</label>
-          <input type="password" id="adminPass" value="ezrabot2026" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white">
-        </div>
-      </div>
-
-      <div class="flex gap-2 pt-1">
-        <button onclick="closeLoginModal()" class="w-1/2 bg-slate-800 text-slate-300 font-semibold text-xs py-2 rounded-lg">Cancelar</button>
-        <button onclick="submitLogin()" class="w-1/2 bg-amber-600 hover:bg-amber-500 text-white font-semibold text-xs py-2 rounded-lg">Ingresar</button>
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 max-w-sm w-full space-y-4">
+      <h3 class="text-base font-bold text-white text-center">Acceso al Panel Oculto</h3>
+      <input type="text" id="adminUser" value="admin" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white">
+      <input type="password" id="adminPass" value="ezrabot2026" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white">
+      <div class="flex gap-2">
+        <button onclick="closeLoginModal()" class="w-1/2 bg-slate-800 text-slate-300 text-xs py-2 rounded-lg">Cancelar</button>
+        <button onclick="submitLogin()" class="w-1/2 bg-amber-600 text-white text-xs py-2 rounded-lg">Ingresar</button>
       </div>
     </div>
   </div>
 
-  <!-- SIMULADOR CHAT EN VIVO -->
+  <!-- SIMULADOR PRUEBA EN VIVO -->
   <div id="testModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-2 sm:p-4">
-    <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full h-[90vh] sm:h-[550px] flex flex-col shadow-2xl overflow-hidden">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full h-[550px] flex flex-col shadow-2xl overflow-hidden">
       <div class="p-3.5 bg-slate-800/90 border-b border-slate-700 flex items-center justify-between">
-        <div class="flex items-center gap-2.5">
-          <div class="w-9 h-9 rounded-full bg-pink-600 flex items-center justify-center text-white font-bold text-xs">
-            <i class="fa-solid fa-venus"></i>
-          </div>
-          <div>
-            <div class="text-xs sm:text-sm font-bold text-white">Valeria (Asistente Chat 24/7)</div>
-            <div class="text-[10px] text-emerald-400 flex items-center gap-1">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Respondiendo automáticamente
-            </div>
-          </div>
-        </div>
-        <button onclick="toggleTestModal()" class="text-slate-400 hover:text-white p-1"><i class="fa-solid fa-xmark text-lg"></i></button>
+        <div class="text-xs font-bold text-white">Valeria (Asistente Chat 24/7)</div>
+        <button onclick="toggleTestModal()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
       </div>
-
-      <div id="chatMessages" class="flex-1 p-4 space-y-3 overflow-y-auto custom-scrollbar bg-slate-950/70">
-        <div class="bg-blue-600/10 border border-blue-500/20 text-slate-200 text-xs p-3 rounded-xl">
-          ¡Hola! 👋 Qué gusto saludarte, soy Valeria. ¿En qué te puedo orientar el día de hoy? 😊
-        </div>
+      <div id="chatMessages" class="flex-1 p-4 space-y-3 overflow-y-auto bg-slate-950/70 text-xs">
+        <div class="bg-blue-600/10 border border-blue-500/20 text-slate-200 p-3 rounded-xl">¡Hola! ¿En qué puedo orientarte hoy?</div>
       </div>
-
       <div class="p-3 bg-slate-900 border-t border-slate-800 flex gap-2">
-        <input type="text" id="chatInput" placeholder="Escribe tu mensaje..." onkeypress="if(event.key==='Enter') sendChatMessage()" class="flex-1 bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500">
-        <button onclick="sendChatMessage()" class="bg-blue-600 hover:bg-blue-500 text-white text-xs px-3.5 rounded-lg font-semibold"><i class="fa-solid fa-paper-plane"></i></button>
+        <input type="text" id="chatInput" placeholder="Escribe tu consulta..." onkeypress="if(event.key==='Enter') sendChatMessage()" class="flex-1 bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white">
+        <button onclick="sendChatMessage()" class="bg-blue-600 text-white text-xs px-3.5 rounded-lg"><i class="fa-solid fa-paper-plane"></i></button>
       </div>
     </div>
   </div>
@@ -580,13 +441,13 @@
     let activeChannelToConnect = "";
     let isAdminLoggedIn = false;
     let profiles = {
-      "recetas-demo": { name: "Recetario MasterChef & Repostería Pro", phone: "+51 987 654 321" },
-      "botica-demo": { name: "Farmacia & Botica San Martín", phone: "+51 912 345 678" }
+      "recetas-demo": { name: "Recetario MasterChef & Repostería Pro[cite: 9]", rubro: "recetas", slogan: "+500 recetas en PDF[cite: 9]", phone: "+51 987 654 321[cite: 9]", unresolved: ["¿Envíos a provincia los domingos?[cite: 9]"] }
     };
     let currentProfileId = "recetas-demo";
 
     window.addEventListener("DOMContentLoaded", () => {
       renderProfileSelectors();
+      loadProfileData(currentProfileId);
     });
 
     function renderProfileSelectors() {
@@ -603,96 +464,105 @@
       });
     }
 
-    function switchProfile(id) { currentProfileId = id; renderProfileSelectors(); }
+    function switchProfile(id) { currentProfileId = id; renderProfileSelectors(); loadProfileData(id); }
+
+    function loadProfileData(id) {
+      const p = profiles[id];
+      if (!p) return;
+      document.getElementById("profName").value = p.name || "";
+      document.getElementById("profRubro").value = p.rubro || "recetas";
+      document.getElementById("profSlogan").value = p.slogan || "";
+      document.getElementById("profPhone").value = p.phone || "";
+      renderUnresolvedQueries(p.unresolved || []);
+    }
+
+    function saveCurrentProfile() {
+      const p = profiles[currentProfileId];
+      p.name = document.getElementById("profName").value;
+      p.rubro = document.getElementById("profRubro").value;
+      p.slogan = document.getElementById("profSlogan").value;
+      p.phone = document.getElementById("profPhone").value;
+      renderProfileSelectors();
+      alert("¡Perfil guardado y aplicado con éxito[cite: 9]!");
+    }
+
+    function renderUnresolvedQueries(queries) {
+      const list = document.getElementById("unresolvedList");
+      list.innerHTML = "";
+      if (!queries.length) { list.innerHTML = `<p class="text-xs text-slate-500 italic">No hay dudas pendientes[cite: 9].</p>`; return; }
+      queries.forEach((q, idx) => {
+        const item = document.createElement("div");
+        item.className = "p-3 rounded-xl bg-slate-950 border border-slate-800 flex justify-between items-center";
+        item.innerHTML = `<span class="text-xs text-slate-300">"${q}"</span><button onclick="resolveQuery(${idx})" class="bg-blue-600 text-white text-[11px] px-3 py-1 rounded-lg">Asimilar[cite: 9]</button>`;
+        list.appendChild(item);
+      });
+    }
+
+    function resolveQuery(idx) {
+      const ans = prompt("Respuesta oficial para asimilar:");
+      if (ans) {
+        profiles[currentProfileId].unresolved.splice(idx, 1);
+        renderUnresolvedQueries(profiles[currentProfileId].unresolved);
+        alert("¡Asimilado correctamente[cite: 9]!");
+      }
+    }
 
     function toggleBotStatus(isChecked) {
       const txt = document.getElementById("botStatusText");
-      if (isChecked) { txt.textContent = "Respondiendo en automático"; txt.className = "text-[10px] text-emerald-400"; }
-      else { txt.textContent = "Bot pausado (Modo manual)"; txt.className = "text-[10px] text-amber-400"; }
+      txt.textContent = isChecked ? "Respondiendo en automático[cite: 9]" : "Bot pausado[cite: 9]";
+      txt.className = isChecked ? "text-[10px] text-emerald-400" : "text-[10px] text-amber-400";
     }
 
-    function openConnectModal(channelName) {
-      activeChannelToConnect = channelName;
-      document.getElementById("connectModalTitle").textContent = `Conectar y Vincular ${channelName}`;
-      document.getElementById("connectModalDesc").textContent = `Configura tu número de celular o credenciales oficiales para ${channelName}.`;
-      document.getElementById("inputLabelText").textContent = channelName === 'WhatsApp' || channelName === 'SMS' ? "Número de Celular Principal (+51...)" : "Token de API / Enlace de Cuenta";
-      document.getElementById("connectInputValue").value = channelName === 'WhatsApp' ? "+51 987 654 321" : "";
+    function openConnectModal(name) {
+      activeChannelToConnect = name;
+      document.getElementById("connectModalTitle").textContent = `Conectar ${name}[cite: 9]`;
       document.getElementById("connectModal").classList.remove("hidden");
     }
-
     function closeConnectModal() { document.getElementById("connectModal").classList.add("hidden"); }
-
-    function confirmConnection() {
-      const val = document.getElementById("connectInputValue").value.trim();
-      if (!val) { alert("Ingresa un dato válido."); return; }
-      if (activeChannelToConnect === 'WhatsApp') {
-        document.getElementById("waConnectedNumber").textContent = val;
-        document.getElementById("configuredPhoneText").textContent = `Número configurado: ${val}`;
+    function confirmConnection() { alert(`¡${activeChannelToConnect} conectado y vinculado exitosamente[cite: 9]!`); closeConnectModal(); }
+    function syncAllChannels() { alert("¡Sincronización masiva completada[cite: 9]!"); }
+    function addNewQuickAnswer() { prompt("Pregunta frecuente:"); alert("¡Respuesta rápida agregada[cite: 9]!"); }
+    
+    function selectVoice(v) { alert(`Voz de asistente cambiada a ${v}[cite: 11] exitosamente.`); }
+    function addNewProduct() {
+      const prod = prompt("Nombre del nuevo producto digital:");
+      if (prod) {
+        const list = document.getElementById("productList");
+        list.innerHTML += `<div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800 flex justify-between items-center"><div><div class="text-xs font-bold text-white">${prod}[cite: 12]</div><div class="text-[10px] text-emerald-400">$10 USD • Entrega automática[cite: 12]</div></div><button class="text-xs text-slate-400"><i class="fa-solid fa-pen"></i></button></div>`;
+        alert("¡Producto añadido al catálogo de ventas[cite: 12]!");
       }
-      alert(`¡Canal ${activeChannelToConnect} conectado con éxito!`);
-      closeConnectModal();
     }
 
-    function syncAllChannels() { alert("¡Sincronización masiva de canales completada!"); }
-    function addNewQuickAnswer() { 
-      const q = prompt("Escribe la nueva pregunta frecuente:");
-      if (q) alert("¡Respuesta rápida integrada con éxito!");
-    }
-    function saveMessagingChanges() { alert("¡Cambios del Asistente guardados y sincronizados!"); }
-
-    function openLoginModal() {
-      if (isAdminLoggedIn) switchTab("adminTab");
-      else document.getElementById("loginModal").classList.remove("hidden");
-    }
+    function openLoginModal() { if (isAdminLoggedIn) switchTab("adminTab"); else document.getElementById("loginModal").classList.remove("hidden"); }
     function closeLoginModal() { document.getElementById("loginModal").classList.add("hidden"); }
     function submitLogin() {
-      const u = document.getElementById("adminUser").value;
-      const p = document.getElementById("adminPass").value;
-      if (u === "admin" && p === "ezrabot2026") {
-        isAdminLoggedIn = true;
-        closeLoginModal();
-        document.getElementById("nav-adminTab").classList.remove("hidden");
-        document.getElementById("nav-adminTab").classList.add("flex");
-        switchTab("adminTab");
-      } else { alert("Credenciales incorrectas"); }
+      if (document.getElementById("adminUser").value === "admin" && document.getElementById("adminPass").value === "ezrabot2026") {
+        isAdminLoggedIn = true; closeLoginModal(); switchTab("adminTab");
+      } else alert("Credenciales incorrectas");
     }
 
     function switchTab(tabId) {
-      const tabs = ["profileTab", "messagingTab", "voiceTab", "paymentsTab", "adminTab"];
-      tabs.forEach(t => {
+      ["profileTab", "messagingTab", "voiceTab", "paymentsTab", "adminTab"].forEach(t => {
         const el = document.getElementById(t);
         const nav = document.getElementById("nav-" + t);
         if (el) el.classList.add("hidden");
-        if (nav && t !== "adminTab") {
-          nav.className = "flex-1 md:w-full flex items-center justify-center md:justify-start gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold whitespace-nowrap text-slate-400 hover:bg-slate-800/60 hover:text-slate-200 transition-all";
-        }
+        if (nav && t !== "adminTab") nav.className = "flex-1 md:w-full flex items-center justify-center md:justify-start gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold text-slate-400 hover:bg-slate-800/60";
       });
       document.getElementById(tabId).classList.remove("hidden");
       const activeNav = document.getElementById("nav-" + tabId);
-      if (activeNav && tabId !== "adminTab") {
-        activeNav.className = "flex-1 md:w-full flex items-center justify-center md:justify-start gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold whitespace-nowrap bg-blue-600 text-white shadow-sm transition-all";
-      }
+      if (activeNav && t !== "adminTab") activeNav.className = "flex-1 md:w-full flex items-center justify-center md:justify-start gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold bg-blue-600 text-white";
     }
 
     function toggleTestModal() { document.getElementById("testModal").classList.toggle("hidden"); }
-
     function sendChatMessage() {
       const input = document.getElementById("chatInput");
-      const text = input.value.trim();
-      if (!text) return;
+      if (!input.value.trim()) return;
       const msgBox = document.getElementById("chatMessages");
-      msgBox.innerHTML += `<div class="flex justify-end"><div class="bg-blue-600 text-white text-xs px-3 py-2 rounded-xl max-w-[85%]">${text}</div></div>`;
+      msgBox.innerHTML += `<div class="flex justify-end"><div class="bg-blue-600 text-white p-2 rounded-xl">${input.value}</div></div>`;
       input.value = "";
-      msgBox.scrollTop = msgBox.scrollHeight;
-
       setTimeout(() => {
-        let reply = "¡Con gusto te ayudo! Nuestro asistente automático analiza tu consulta y te envía el enlace de compra o catálogo de inmediato.";
-        if (text.toLowerCase().includes("pago") || text.toLowerCase().includes("yape")) {
-          reply = "Aceptamos Yape, Plin y tarjetas de crédito de forma segura. ¿Te genero tu enlace de pago ahora?";
-        }
-        msgBox.innerHTML += `<div class="flex justify-start"><div class="bg-slate-800 text-slate-200 border border-slate-700 text-xs px-3 py-2 rounded-xl max-w-[85%]">${reply}</div></div>`;
-        msgBox.scrollTop = msgBox.scrollHeight;
-      }, 700);
+        msgBox.innerHTML += `<div class="flex justify-start"><div class="bg-slate-800 text-slate-200 p-2 rounded-xl">¡Con gusto te ayudo con eso! Te envío el enlace de compra de inmediato[cite: 9].</div></div>`;
+      }, 500);
     }
   </script>
 </body>

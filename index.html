@@ -3,566 +3,374 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EZRABOT - Asistente Omni-Channel Sales AI</title>
+  <title>Recetario MasterChef & Repostería Pro - EZRA Asistente Ejecutivo</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    .custom-scrollbar::-webkit-scrollbar { width: 5px; }
-    .custom-scrollbar::-webkit-scrollbar-track { background: #0f172a; }
-    .custom-scrollbar::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .custom-scrollbar::-webkit-scrollbar { width: 5px; height: 5px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: #0b1120; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col antialiased selection:bg-blue-600 selection:text-white">
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-indigo-600 selection:text-white">
 
-  <!-- ENCABEZADO SUPERIOR -->
-  <header class="bg-slate-900/90 border-b border-slate-800 sticky top-0 z-40 backdrop-blur-md">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2">
+  <!-- HEADER PROFESIONAL EZRA (SIN ROBOT NI TEXTOS DE IA) -->
+  <header class="bg-slate-900/95 border-b border-slate-800 sticky top-0 z-40 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-3">
       <div class="flex items-center gap-3">
-        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center font-bold text-lg sm:text-xl text-white shadow-lg shadow-blue-500/20 shrink-0">
-          <i class="fa-solid fa-robot"></i>
+        <!-- Logo Ejecutivo Monograma EZRA -->
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-blue-600 to-emerald-400 flex items-center justify-center font-bold text-white shadow-lg shadow-indigo-500/20 ring-1 ring-white/10">
+          <i class="fa-solid fa-sparkles text-lg text-white"></i>
         </div>
         <div class="flex flex-col">
-          <span class="font-extrabold text-lg sm:text-xl tracking-wider text-white leading-tight">EZRABOT</span>
-          <span class="text-[9px] sm:text-[10px] text-blue-400 font-semibold tracking-widest uppercase">Sales AI Omni-Channel</span>
+          <span class="font-extrabold text-lg text-white leading-tight tracking-tight">EZRA</span>
+          <span class="text-[10px] text-indigo-300 font-semibold tracking-wide">Atención y Ventas 24/7</span>
         </div>
       </div>
 
-      <div class="hidden sm:flex items-center gap-2 bg-slate-950/80 px-3 py-1.5 rounded-lg border border-slate-800">
-        <i class="fa-solid fa-store text-blue-400 text-xs"></i>
-        <select id="profileSelector" onchange="switchProfile(this.value)" class="bg-transparent text-xs text-slate-200 font-medium focus:outline-none cursor-pointer pr-2">
-          <!-- Dinámico -->
-        </select>
+      <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>Asesora en vivo · Respuesta inmediata</span>
       </div>
 
-      <div class="flex items-center gap-2 sm:gap-3">
-        <div class="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          En línea y vendiendo
-        </div>
-        <button onclick="toggleTestModal()" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs px-3 sm:px-4 py-2 rounded-lg flex items-center gap-1.5 shadow-md shadow-blue-600/30 transition-all shrink-0">
-          <i class="fa-solid fa-paper-plane text-xs"></i>
-          <span>Probar en Vivo</span>
-        </button>
-        <button id="adminBtn" onclick="openLoginModal()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium text-xs px-2.5 sm:px-3 py-2 rounded-lg border border-slate-700 flex items-center gap-1.5 transition-all shrink-0">
-          <i class="fa-solid fa-lock text-amber-400 text-xs"></i>
-          <span id="adminBtnText" class="hidden sm:inline">Panel Admin</span>
+      <div class="flex items-center gap-2">
+        <a href="https://wa.me/5491148290192?text=Hola,%20quisiera%20información%20sobre%20sus%20productos" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs px-3.5 py-2 rounded-xl flex items-center gap-1.5 transition-all shadow-md shadow-emerald-600/20">
+          <i class="fa-brands fa-whatsapp text-sm"></i>
+          <span>WhatsApp Oficial</span>
+        </a>
+        <button onclick="toggleChatModal()" class="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs px-3.5 py-2 rounded-xl flex items-center gap-1.5 transition-all shadow-md shadow-indigo-600/30">
+          <i class="fa-solid fa-comment-dots text-xs"></i>
+          <span>Conversar en Vivo</span>
         </button>
       </div>
-    </div>
-    
-    <!-- SELECTOR MÓVIL -->
-    <div class="sm:hidden px-4 py-2 bg-slate-950 border-t border-slate-800/60 flex items-center gap-2">
-      <span class="text-[11px] text-slate-400 font-medium shrink-0"><i class="fa-solid fa-store text-blue-400 mr-1"></i>Perfil:</span>
-      <select id="profileSelectorMobile" onchange="switchProfile(this.value)" class="w-full bg-slate-900 text-xs text-slate-200 font-medium px-2 py-1 rounded border border-slate-800 focus:outline-none">
-        <!-- Dinámico -->
-      </select>
     </div>
   </header>
 
-  <div class="flex-1 max-w-7xl w-full mx-auto flex flex-col md:flex-row">
-
-    <!-- MENÚ LATERAL -->
-    <aside class="w-full md:w-64 bg-slate-900/40 border-b md:border-b-0 md:border-r border-slate-800/80 p-3 sm:p-4 shrink-0">
-      <div class="hidden md:block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-3 px-2">CENTRO DE CONTROL</div>
-      <nav class="flex md:flex-col overflow-x-auto custom-scrollbar gap-1.5 pb-1 md:pb-0">
-        <button onclick="switchTab('profileTab')" id="nav-profileTab" class="flex-1 md:w-full flex items-center justify-center md:justify-start gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold whitespace-nowrap bg-blue-600 text-white shadow-sm transition-all">
-          <i class="fa-solid fa-user-gear w-4 text-center"></i>
-          <span>Creación de perfiles</span>
+  <!-- CONTENEDOR PRINCIPAL CLIENTE -->
+  <main class="max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8 flex-1 space-y-8">
+    <!-- HERO / BANNER PRINCIPAL -->
+    <div class="p-6 sm:p-10 rounded-3xl bg-gradient-to-br from-slate-900 via-indigo-950/30 to-slate-950 border border-slate-800 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-2xl">
+      <div class="space-y-3 text-center lg:text-left max-w-2xl">
+        <span class="text-xs font-bold text-indigo-400 uppercase tracking-widest">RECETAS • ATENCIÓN PERSONALIZADA</span>
+        <h1 class="text-2xl sm:text-4xl font-extrabold text-white leading-tight">Recetario MasterChef & Repostería Pro</h1>
+        <p class="text-sm sm:text-base text-slate-300">+500 recetas en PDF con videos paso a paso y técnicas de pastelería</p>
+        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-2 pt-2 text-xs text-slate-400 font-mono">
+          <span class="bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-800"><i class="fa-solid fa-clock text-indigo-400 mr-1.5"></i>Atención Inmediata</span>
+          <span class="bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-800"><i class="fa-solid fa-bolt text-emerald-400 mr-1.5"></i>Entrega &lt; 3 seg</span>
+          <span class="bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-800"><i class="fa-solid fa-shield-halved text-amber-400 mr-1.5"></i>Garantía Total</span>
+        </div>
+      </div>
+      <div class="p-5 bg-slate-900/90 border border-slate-800 rounded-2xl flex flex-col items-center gap-3 shrink-0 w-64 shadow-xl">
+        <div class="text-[11px] font-bold text-indigo-400 tracking-wider uppercase">Asesora Asignada</div>
+        <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-indigo-600 to-blue-500 flex items-center justify-center text-3xl shadow-lg ring-2 ring-indigo-400/30">
+          👩‍💼
+        </div>
+        <div class="text-xs font-bold text-white">VALERIA (En línea)</div>
+        <button onclick="toggleChatModal()" class="w-full py-2 px-4 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold transition-all shadow-md shadow-indigo-600/30">
+          Conversar en Vivo
         </button>
-        <button onclick="switchTab('messagingTab')" id="nav-messagingTab" class="flex-1 md:w-full flex items-center justify-center md:justify-start gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold whitespace-nowrap text-slate-400 hover:bg-slate-800/60 hover:text-slate-200 transition-all">
-          <i class="fa-solid fa-comments w-4 text-center"></i>
-          <span>Asistente de mensajería</span>
-        </button>
-        <button onclick="switchTab('voiceTab')" id="nav-voiceTab" class="flex-1 md:w-full flex items-center justify-center md:justify-start gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold whitespace-nowrap text-slate-400 hover:bg-slate-800/60 hover:text-slate-200 transition-all">
-          <i class="fa-solid fa-phone-volume w-4 text-center"></i>
-          <span>Asistente de llamadas</span>
-        </button>
-        <button onclick="switchTab('paymentsTab')" id="nav-paymentsTab" class="flex-1 md:w-full flex items-center justify-center md:justify-start gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold whitespace-nowrap text-slate-400 hover:bg-slate-800/60 hover:text-slate-200 transition-all">
-          <i class="fa-solid fa-wallet w-4 text-center"></i>
-          <span>Medios de Pago</span>
-        </button>
-        <button id="nav-adminTab" onclick="switchTab('adminTab')" class="hidden md:w-full items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/30 transition-all">
-          <span class="flex items-center gap-2"><i class="fa-solid fa-user-shield w-4"></i> Gestión Admin</span>
-          <i class="fa-solid fa-star text-[10px]"></i>
-        </button>
-      </nav>
-    </aside>
+      </div>
+    </div>
 
-    <!-- CONTENIDO PRINCIPAL -->
-    <main class="flex-1 p-4 sm:p-6 custom-scrollbar overflow-y-auto">
-      
-      <!-- 1. CREACIÓN DE PERFILES Y EVOLUCIÓN (CAPTURA 1) -->
-      <section id="profileTab" class="space-y-6">
-        <div>
-          <div class="text-[10px] font-bold text-blue-400 uppercase tracking-widest mb-0.5">ARQUITECTURA DE NEGOCIOS • DESPLIEGUE INSTANTÁNEO</div>
-          <h2 class="text-xl sm:text-2xl font-extrabold text-white">Configura tu Perfil de Negocio</h2>
-          <p class="text-xs sm:text-sm text-slate-400 mt-1">Crea o edita la identidad de tu empresa y nutre la base de conocimiento central[cite: 9].</p>
-        </div>
-
-        <div class="p-4 sm:p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-3 gap-2">
-            <div>
-              <span class="text-[10px] font-bold text-blue-400 uppercase tracking-widest">PERSONALIZACIÓN DE RUBRO</span>
-              <h3 class="text-sm sm:text-base font-bold text-slate-200">Seleccionar y Personalizar Rubro de Negocio[cite: 9]</h3>
-            </div>
-            <button onclick="saveCurrentProfile()" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs px-4 py-2 rounded-lg flex items-center gap-2 transition-all">
-              <i class="fa-solid fa-floppy-disk"></i> Guardar y Aplicar Base de Datos[cite: 9]
-            </button>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
-            <div>
-              <label class="block text-xs font-semibold text-slate-400 mb-1">Rubro / Sector Comercial[cite: 9]</label>
-              <select id="profRubro" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs sm:text-sm text-white">
-                <option value="recetas">Recetarios de Cocina / Repostería</option>
-                <option value="ebooks">Venta de E-books / Libros Digitales</option>
-                <option value="cursos">Educación / Cursos Digitales / Infoproductos</option>
-                <option value="afiliados">Marketing de Afiliados / Hotmart</option>
-                <option value="coaching">Coaching / Mentorías / Desarrollo Personal</option>
-                <option value="botica">Botica / Farmacia / Salud</option>
-                <option value="dental">Clínica Dental / Odontología</option>
-                <option value="comics">Tienda de Cómics & Coleccionables</option>
-                <option value="ecommerce">E-commerce / Tienda Online</option>
-              </select>
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-slate-400 mb-1">Nombre Comercial del Negocio[cite: 9]</label>
-              <input type="text" id="profName" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs sm:text-sm text-white">
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-slate-400 mb-1">Slogan o Especialidad Principal[cite: 9]</label>
-              <input type="text" id="profSlogan" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs sm:text-sm text-white">
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-slate-400 mb-1">Horario y Cobertura[cite: 9]</label>
-              <input type="text" id="profHours" value="Atención automática 24/7 + Resistencia IA" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs sm:text-sm text-white">
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-slate-400 mb-1">Teléfono / WhatsApp Principal[cite: 9]</label>
-              <input type="text" id="profPhone" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs sm:text-sm text-white">
-            </div>
-            <div>
-              <label class="block text-xs font-semibold text-slate-400 mb-1">Enlace Web / Catálogo en la Nube[cite: 9]</label>
-              <input type="text" id="profCatalog" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs sm:text-sm text-white">
-            </div>
-            <div class="sm:col-span-2 lg:col-span-3">
-              <label class="block text-xs font-semibold text-slate-400 mb-1">Política de Precios & Moneda[cite: 9]</label>
-              <input type="text" id="profPolicies" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs sm:text-sm text-white">
-            </div>
-          </div>
-        </div>
-
-        <!-- EVOLUCIÓN E INTELIGENCIA ACTIVA -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
-          <div class="lg:col-span-2 p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-3">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-              <div>
-                <span class="text-[10px] font-bold text-amber-400 uppercase tracking-widest">FILTRO Y REGISTRO DE DUDAS NO RESUELTAS[cite: 9]</span>
-                <h3 class="text-sm sm:text-base font-bold text-slate-200">Preguntas e Indecisiones Registradas[cite: 9]</h3>
-              </div>
-              <span class="text-xs bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-3 py-1 rounded-lg font-semibold flex items-center gap-1.5">
-                Resueltas / Asimiladas (<span id="resolvedCount">12</span>)[cite: 9]
-              </span>
-            </div>
-            <div id="unresolvedList" class="space-y-2.5"></div>
-          </div>
-
-          <div class="p-5 rounded-2xl bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 flex flex-col justify-between space-y-4">
-            <div class="space-y-2">
-              <div class="flex items-center gap-2 text-blue-400">
-                <i class="fa-regular fa-lightbulb text-lg"></i>
-                <h4 class="text-xs font-extrabold uppercase tracking-wide text-white">CÓMO FUNCIONA LA EVOLUCIÓN[cite: 9]</h4>
-              </div>
-              <p class="text-xs text-slate-300 leading-relaxed">
-                Cada consulta no resuelta se registra automáticamente. Al añadir la respuesta, la IA asimila en menos de 60 segundos[cite: 9].
-              </p>
-            </div>
-            <div class="pt-3 border-t border-slate-800 space-y-2">
-              <div class="flex items-center justify-between text-xs">
-                <span class="font-bold text-slate-300">Tasa de resolución autónoma[cite: 9]</span>
-                <span class="font-extrabold text-blue-400" id="ratePercent">94.2%[cite: 9]</span>
-              </div>
-              <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
-                <div class="bg-blue-500 h-full rounded-full" style="width: 94.2%;"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 2. ASISTENTE DE MENSAJERÍA (CAPTURAS 2 Y 3) -->
-      <section id="messagingTab" class="hidden space-y-6">
-        <div class="p-5 sm:p-6 rounded-2xl bg-slate-900/60 border border-slate-800 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <div class="space-y-1">
-            <div class="text-[10px] font-bold text-blue-400 uppercase tracking-widest">INTELIGENCIA ACTIVA 24/7[cite: 9]</div>
-            <h2 class="text-xl sm:text-2xl font-extrabold text-white">Tu Asistente por Chat[cite: 9]</h2>
-            <p class="text-xs sm:text-sm text-slate-400 max-w-2xl">
-              Responde dudas al instante, recomienda productos y envía el enlace de compra automáticamente las 24 horas del día[cite: 9].
-            </p>
-          </div>
-          <div class="bg-slate-950 px-4 py-3 rounded-xl border border-slate-800 flex items-center gap-3 shrink-0">
-            <div class="flex flex-col text-right">
-              <span class="text-xs font-bold text-white">ESTADO DEL BOT[cite: 9]</span>
-              <span class="text-[10px] text-emerald-400" id="botStatusText">Respondiendo en automático[cite: 9]</span>
-            </div>
-            <input type="checkbox" id="botActiveToggle" onchange="toggleBotStatus(this.checked)" class="w-5 h-5 accent-blue-600 cursor-pointer" checked>
-          </div>
-        </div>
-
-        <!-- CANALES CONECTADOS -->
-        <div class="space-y-3">
-          <div class="flex items-center justify-between">
-            <h3 class="text-sm font-bold text-white">Canales Conectados[cite: 9]</h3>
-            <button onclick="syncAllChannels()" class="text-xs bg-slate-800 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700">Sincronizar Todas[cite: 9]</button>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <!-- SMS -->
-            <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-3">
-              <div class="flex justify-between items-center"><span class="text-xs font-bold text-white">Mensajes de Celular (SMS)[cite: 9]</span><span class="text-[10px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded">Activo[cite: 9]</span></div>
-              <button onclick="openConnectModal('SMS')" class="w-full bg-blue-600 hover:bg-blue-500 text-white text-xs py-1.5 rounded-lg">Conectar SMS[cite: 9]</button>
-            </div>
-            <!-- Telegram -->
-            <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-3">
-              <div class="flex justify-between items-center"><span class="text-xs font-bold text-white">Telegram[cite: 9]</span><span class="text-[10px] bg-blue-500/10 text-blue-400 px-2 py-0.5 rounded">Conectado[cite: 9]</span></div>
-              <button onclick="openConnectModal('Telegram')" class="w-full bg-sky-600 hover:bg-sky-500 text-white text-xs py-1.5 rounded-lg">Vincular Telegram[cite: 9]</button>
-            </div>
-            <!-- Facebook -->
-            <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-3">
-              <div class="flex justify-between items-center"><span class="text-xs font-bold text-white">Facebook Messenger[cite: 9]</span><span class="text-[10px] bg-blue-500/10 text-blue-400 px-2 py-0.5 rounded">Conectado[cite: 9]</span></div>
-              <button onclick="openConnectModal('Facebook')" class="w-full bg-blue-600 hover:bg-blue-500 text-white text-xs py-1.5 rounded-lg">Vincular Facebook[cite: 9]</button>
-            </div>
-            <!-- WhatsApp -->
-            <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-3">
-              <div class="flex justify-between items-center"><span class="text-xs font-bold text-white">WhatsApp Business[cite: 9]</span><span class="text-[10px] bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded">En vivo[cite: 9]</span></div>
-              <button onclick="openConnectModal('WhatsApp')" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white text-xs py-1.5 rounded-lg">Conectar WhatsApp[cite: 9]</button>
-            </div>
-            <!-- Instagram -->
-            <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-3">
-              <div class="flex justify-between items-center"><span class="text-xs font-bold text-white">Instagram Direct[cite: 9]</span><span class="text-[10px] bg-pink-500/10 text-pink-400 px-2 py-0.5 rounded">En vivo[cite: 9]</span></div>
-              <button onclick="openConnectModal('Instagram')" class="w-full bg-pink-600 hover:bg-pink-500 text-white text-xs py-1.5 rounded-lg">Conectar Instagram[cite: 9]</button>
-            </div>
-            <!-- Web -->
-            <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-3">
-              <div class="flex justify-between items-center"><span class="text-xs font-bold text-white">Chat en Sitio Web[cite: 9]</span><span class="text-[10px] bg-indigo-500/10 text-indigo-400 px-2 py-0.5 rounded">En vivo[cite: 9]</span></div>
-              <button onclick="openConnectModal('Widget Web')" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white text-xs py-1.5 rounded-lg">Conectar Widget[cite: 9]</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- RESPUESTAS Y TONO -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div class="lg:col-span-2 p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
-            <div class="flex items-center justify-between">
-              <h3 class="text-sm font-bold text-slate-200">Entrena tu Asistente de Mensajes & Respuestas Rápidas[cite: 9]</h3>
-              <button onclick="addNewQuickAnswer()" class="text-xs bg-blue-600 text-white px-3 py-1.5 rounded-lg">+ Nueva Respuesta[cite: 9]</button>
-            </div>
-            <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
-              <div class="text-xs font-bold text-white">¿Cuáles son los medios de pago y costos de envío?[cite: 9]</div>
-              <p class="text-xs text-slate-400">Aceptamos tarjetas, transferencia y MercadoPago. Envíos gratis sobre $50[cite: 9].</p>
-            </div>
-          </div>
-
-          <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-3">
-            <h3 class="text-sm font-bold text-slate-200">Personalidad del Asistente[cite: 9]</h3>
-            <label class="block text-xs"><input type="radio" name="toneChoice" checked> Ásilo y sonriente (Usa emojis con sutileza)[cite: 9]</label>
-            <label class="block text-xs"><input type="radio" name="toneChoice"> Formal y ejecutivo (Sobria y precisa)[cite: 9]</label>
-            <label class="block text-xs"><input type="radio" name="toneChoice"> Corto y al grano (Directo a precios y enlaces)[cite: 9]</label>
-          </div>
-        </div>
-      </section>
-
-      <!-- 3. ASISTENTE DE LLAMADAS (CAPTURA 4) -->
-      <section id="voiceTab" class="hidden space-y-6">
-        <div class="p-5 sm:p-6 rounded-2xl bg-slate-900/60 border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div>
-            <div class="text-[10px] font-bold text-blue-400 uppercase tracking-widest">CANAL DE VOZ HUMANA • LÍNEA TELEFÓNICA ACTIVA 24/7[cite: 11]</div>
-            <h2 class="text-xl sm:text-2xl font-extrabold text-white">Tu Asistente de Voz por Teléfono[cite: 11]</h2>
-            <p class="text-xs text-slate-400 mt-1">Atiende llamadas entrantes, responde preguntas con voz humana y cierra ventas sin que pierdas ninguna llamada[cite: 11].</p>
-          </div>
-          <div class="bg-slate-950 px-4 py-3 rounded-xl border border-slate-800 text-center">
-            <span class="text-xs font-bold text-white block">ESTADO DE LA CENTRAL[cite: 11]</span>
-            <span class="text-[10px] text-emerald-400 flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Disponible para recibir llamadas[cite: 11]</span>
-          </div>
-        </div>
-
-        <!-- CONFIGURACIÓN DE VOZ Y CONTROL -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
-            <h3 class="text-sm font-bold text-white">Elige la voz de tu Asistente[cite: 11]</h3>
-            <div class="grid grid-cols-3 gap-2">
-              <button onclick="selectVoice('Camila')" class="p-3 bg-blue-600/20 border border-blue-500 rounded-xl text-center text-xs font-bold text-white">Camila <br><span class="text-[9px] text-slate-400">Cálida y amigable[cite: 11]</span></button>
-              <button onclick="selectVoice('Mateo')" class="p-3 bg-slate-950 border border-slate-800 rounded-xl text-center text-xs font-bold text-white">Mateo <br><span class="text-[9px] text-slate-400">Enérgico[cite: 11]</span></button>
-              <button onclick="selectVoice('Sofía')" class="p-3 bg-slate-950 border border-slate-800 rounded-xl text-center text-xs font-bold text-white">Sofía <br><span class="text-[9px] text-slate-400">Profesional[cite: 11]</span></button>
-            </div>
-
-            <div class="space-y-2 pt-2">
-              <label class="block text-xs font-semibold text-slate-300">Descuento máximo autorizado: <span id="discountVal" class="text-blue-400 font-bold">10%</span>[cite: 11]</label>
-              <input type="range" min="0" max="25" value="10" oninput="document.getElementById('discountVal').textContent = this.value + '%'" class="w-full accent-blue-600">
-            </div>
-          </div>
-
-          <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4 flex flex-col justify-between">
-            <div>
-              <span class="text-[10px] font-bold text-amber-400 uppercase tracking-widest">TOMA AL TIMÓN CUANDO QUIERAS[cite: 11]</span>
-              <h3 class="text-sm font-bold text-white">Control de 1 Clic para el Dueño[cite: 11]</h3>
-              <p class="text-xs text-slate-400 mt-1">Acciones instantáneas mientras tu asistente atiende la llamada[cite: 11].</p>
-            </div>
-            <div class="space-y-2">
-              <button onclick="alert('Transfiriendo llamada a tu celular...')" class="w-full bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold py-2.5 rounded-lg flex items-center justify-center gap-2">
-                <i class="fa-solid fa-phone"></i> Hablar yo en la llamada[cite: 11]
-              </button>
-              <button onclick="alert('Enlace de pago enviado por WhatsApp al cliente.')" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold py-2.5 rounded-lg flex items-center justify-center gap-2">
-                <i class="fa-brands fa-whatsapp text-emerald-400"></i> Enviar enlace de pago por WhatsApp[cite: 11]
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 4. MEDIOS DE PAGO Y COBROS (CAPTURA 5) -->
-      <section id="paymentsTab" class="hidden space-y-6">
-        <div class="p-5 sm:p-6 rounded-2xl bg-slate-900/60 border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div>
-            <div class="text-[10px] font-bold text-blue-400 uppercase tracking-widest">TESORERÍA & DISTRIBUCIÓN AUTOMATIZADA • MÓDULO VENTA RÁPIDA[cite: 12]</div>
-            <h2 class="text-xl sm:text-2xl font-extrabold text-white">Medios de Pago y Cobros Fáciles[cite: 12]</h2>
-            <p class="text-xs sm:text-sm text-slate-400 mt-1">Conecta cómo quieres cobrar. El Asistente genera los links y cobra automáticamente durante el chat o la llamada[cite: 12].</p>
-          </div>
-          <div class="flex gap-3">
-            <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-center text-xs">
-              <span class="text-blue-400 font-bold block text-sm">Menor a 3 seg[cite: 12]</span> Entrega
-            </div>
-            <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-center text-xs">
-              <span class="text-emerald-400 font-bold block text-sm">100%[cite: 12]</span> Validación Bot
-            </div>
-          </div>
-        </div>
-
-        <!-- PASARELAS Y PRODUCTOS -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <!-- Pasarelas -->
-          <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
-            <div class="flex justify-between items-center"><h3 class="text-sm font-bold text-white">Pasarelas de Pago Listas[cite: 12]</h3><span class="text-xs bg-blue-500/10 text-blue-400 px-2.5 py-0.5 rounded font-semibold">3 Activas[cite: 12]</span></div>
-            
-            <div class="space-y-3">
-              <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800 flex justify-between items-center">
-                <div><div class="text-xs font-bold text-white">MercadoPago / Tarjetas Locales[cite: 12]</div><div class="text-[10px] text-slate-400">Cobros en pesos y hasta 12 cuotas[cite: 12]</div></div>
-                <input type="checkbox" checked class="w-4 h-4 accent-blue-600">
-              </div>
-              <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800 flex justify-between items-center">
-                <div><div class="text-xs font-bold text-white">Stripe / Tarjetas Globales[cite: 12]</div><div class="text-[10px] text-slate-400">Visa, Mastercard, Apple Pay[cite: 12]</div></div>
-                <input type="checkbox" checked class="w-4 h-4 accent-blue-600">
-              </div>
-              <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800 flex justify-between items-center">
-                <div><div class="text-xs font-bold text-white">Transferencia Bancaria Inmediata[cite: 12]</div><div class="text-[10px] text-slate-400">OCR Asistido por Alias / CBU[cite: 12]</div></div>
-                <input type="checkbox" checked class="w-4 h-4 accent-blue-600">
-              </div>
-            </div>
-          </div>
-
-          <!-- Productos -->
-          <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
-            <div class="flex justify-between items-center"><h3 class="text-sm font-bold text-white">Tus Productos para Venta Rápidas[cite: 12]</h3><button onclick="addNewProduct()" class="text-xs bg-blue-600 text-white px-3 py-1.5 rounded-lg">+ Agregar Producto[cite: 12]</button></div>
-            
-            <div class="space-y-3" id="productList">
-              <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800 flex justify-between items-center">
-                <div><div class="text-xs font-bold text-white">Ebook / Manual en PDF de Emprendimiento[cite: 12]</div><div class="text-[10px] text-emerald-400">$15 USD / $15.000 ARS • Entrega automática[cite: 12]</div></div>
-                <button class="text-xs text-slate-400 hover:text-white"><i class="fa-solid fa-pen"></i></button>
-              </div>
-              <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800 flex justify-between items-center">
-                <div><div class="text-xs font-bold text-white">Pack de Cómics / Manga Digital[cite: 12]</div><div class="text-[10px] text-emerald-400">$9 USD / $9.000 ARS • Enlace protegido[cite: 12]</div></div>
-                <button class="text-xs text-slate-400 hover:text-white"><i class="fa-solid fa-pen"></i></button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 5. GESTIÓN ADMIN -->
-      <section id="adminTab" class="hidden space-y-5">
-        <h2 class="text-xl font-bold text-white">Panel de Administración Maestro</h2>
-        <div class="p-5 bg-slate-900 rounded-xl border border-slate-800 space-y-3">
-          <h3 class="text-sm font-bold text-slate-200">Perfiles Registrados en el Sistema</h3>
-          <div id="adminProfilesList" class="space-y-2"></div>
-        </div>
-      </section>
-
-    </main>
-  </div>
-
-  <!-- MODAL DE CONEXIÓN DE CANALES -->
-  <div id="connectModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 max-w-md w-full space-y-4 shadow-2xl">
+    <!-- CATÁLOGO DE PRODUCTOS -->
+    <div class="space-y-4">
       <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-        <h3 class="text-sm font-bold text-white" id="connectModalTitle">Conectar Canal[cite: 9]</h3>
-        <button onclick="closeConnectModal()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+        <h2 class="text-xl font-bold text-white">Catálogo de Productos para Venta Rápida</h2>
+        <span class="text-xs text-slate-400 font-mono">Despacho Digital Instantáneo</span>
       </div>
-      <div class="space-y-3 text-xs text-slate-300">
-        <p id="connectModalDesc">Ingresa el número o token oficial[cite: 9].</p>
-        <input type="text" id="connectInputValue" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-white text-xs" placeholder="+51 987 654 321">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        
+        <div class="p-6 rounded-2xl bg-slate-900/70 border border-slate-800 flex flex-col justify-between space-y-4 hover:border-slate-700 transition-all shadow-lg">
+          <div class="space-y-2.5">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-mono px-2.5 py-1 rounded bg-indigo-500/10 text-indigo-400 uppercase font-bold tracking-wider">pdf</span>
+              <span class="text-[11px] text-emerald-400 font-bold">Entrega Inmediata</span>
+            </div>
+            <h3 class="text-sm sm:text-base font-bold text-white">Ebook / Manual en PDF de Emprendimiento & Repostería</h3>
+            <p class="text-xs text-slate-400 leading-relaxed line-clamp-2">Guía práctica paso a paso con 14 plantillas de costeo y técnicas.</p>
+          </div>
+          <div class="pt-3 border-t border-slate-800 flex items-center justify-between">
+            <span class="text-xl font-extrabold text-emerald-400 font-mono">$15 USD</span>
+            <div class="flex gap-1.5">
+              <button onclick="openChatWithProduct('Ebook%20%2F%20Manual%20en%20PDF%20de%20Emprendimiento%20%26%20Reposter%C3%ADa')" class="bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold px-2.5 py-1.5 rounded-xl transition-all">
+                Consultar
+              </button>
+              <button onclick="startCheckout('prod-1', 'Ebook%20%2F%20Manual%20en%20PDF%20de%20Emprendimiento%20%26%20Reposter%C3%ADa', 15)" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-3 py-1.5 rounded-xl transition-all shadow-md shadow-emerald-600/20">
+                Comprar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-slate-900/70 border border-slate-800 flex flex-col justify-between space-y-4 hover:border-slate-700 transition-all shadow-lg">
+          <div class="space-y-2.5">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-mono px-2.5 py-1 rounded bg-indigo-500/10 text-indigo-400 uppercase font-bold tracking-wider">pack</span>
+              <span class="text-[11px] text-emerald-400 font-bold">Entrega Inmediata</span>
+            </div>
+            <h3 class="text-sm sm:text-base font-bold text-white">Pack de Cómics / Manga Digital (Cap. 1 al 10)</h3>
+            <p class="text-xs text-slate-400 leading-relaxed line-clamp-2">Edición remasterizada en alta resolución con material extra y bocetos.</p>
+          </div>
+          <div class="pt-3 border-t border-slate-800 flex items-center justify-between">
+            <span class="text-xl font-extrabold text-emerald-400 font-mono">$9 USD</span>
+            <div class="flex gap-1.5">
+              <button onclick="openChatWithProduct('Pack%20de%20C%C3%B3mics%20%2F%20Manga%20Digital%20(Cap.%201%20al%2010)')" class="bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold px-2.5 py-1.5 rounded-xl transition-all">
+                Consultar
+              </button>
+              <button onclick="startCheckout('prod-2', 'Pack%20de%20C%C3%B3mics%20%2F%20Manga%20Digital%20(Cap.%201%20al%2010)', 9)" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-3 py-1.5 rounded-xl transition-all shadow-md shadow-emerald-600/20">
+                Comprar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-slate-900/70 border border-slate-800 flex flex-col justify-between space-y-4 hover:border-slate-700 transition-all shadow-lg">
+          <div class="space-y-2.5">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-mono px-2.5 py-1 rounded bg-indigo-500/10 text-indigo-400 uppercase font-bold tracking-wider">course</span>
+              <span class="text-[11px] text-emerald-400 font-bold">Entrega Inmediata</span>
+            </div>
+            <h3 class="text-sm sm:text-base font-bold text-white">Acceso a Curso y Comunidad Exclusiva</h3>
+            <p class="text-xs text-slate-400 leading-relaxed line-clamp-2">Membresía anual con soporte semanal en vivo y acceso ilimitado a masterclasses.</p>
+          </div>
+          <div class="pt-3 border-t border-slate-800 flex items-center justify-between">
+            <span class="text-xl font-extrabold text-emerald-400 font-mono">$49 USD</span>
+            <div class="flex gap-1.5">
+              <button onclick="openChatWithProduct('Acceso%20a%20Curso%20y%20Comunidad%20Exclusiva')" class="bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold px-2.5 py-1.5 rounded-xl transition-all">
+                Consultar
+              </button>
+              <button onclick="startCheckout('prod-3', 'Acceso%20a%20Curso%20y%20Comunidad%20Exclusiva', 49)" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-3 py-1.5 rounded-xl transition-all shadow-md shadow-emerald-600/20">
+                Comprar
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
+
+    <!-- ENLACES A REDES SOCIALES OFICIALES -->
+    <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-3">
+      <h3 class="text-sm font-bold text-white">Canales Oficiales de Contacto</h3>
+      <div class="flex flex-wrap gap-3">
+        <a href="https://wa.me/5491148290192" target="_blank" class="p-3 bg-slate-950 border border-slate-800 hover:border-emerald-500/40 rounded-xl flex items-center gap-2 text-xs text-slate-200">
+          <i class="fa-brands fa-whatsapp text-emerald-400 text-lg"></i>
+          <span>WhatsApp: +54 9 11 4829-0192</span>
+        </a>
+        <a href="https://t.me/recetario_pro_bot" target="_blank" class="p-3 bg-slate-950 border border-slate-800 hover:border-sky-500/40 rounded-xl flex items-center gap-2 text-xs text-slate-200">
+          <i class="fa-brands fa-telegram text-sky-400 text-lg"></i>
+          <span>Telegram</span>
+        </a>
+        <a href="https://instagram.com/recetario.masterchef" target="_blank" class="p-3 bg-slate-950 border border-slate-800 hover:border-pink-500/40 rounded-xl flex items-center gap-2 text-xs text-slate-200">
+          <i class="fa-brands fa-instagram text-pink-400 text-lg"></i>
+          <span>Instagram</span>
+        </a>
+        <a href="https://tiktok.com/@recetariomasterchef" target="_blank" class="p-3 bg-slate-950 border border-slate-800 hover:border-slate-500 rounded-xl flex items-center gap-2 text-xs text-slate-200">
+          <i class="fa-brands fa-tiktok text-white text-lg"></i>
+          <span>TikTok</span>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- PIE DE PÁGINA DISCRETO CON ACCESO OCULTO AL DASHBOARD -->
+  <footer class="mt-auto border-t border-slate-800 py-6 px-4 text-center text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between max-w-7xl mx-auto w-full gap-3">
+    <span>© 2026 Recetario MasterChef & Repostería Pro · Atención y Ventas Personalizadas</span>
+    <div class="flex items-center gap-3">
+      <span class="text-[11px] text-slate-600">Servicio de atención garantizado</span>
+      <!-- Toque secreto para el dueño (3 clics o Ctrl+Shift+A) -->
+      <button onclick="handleAdminSecretClick()" class="p-1 text-slate-600 hover:text-slate-400 transition-colors" title="Acceso reservado">
+        <i class="fa-solid fa-lock text-xs opacity-40"></i>
+      </button>
+    </div>
+  </footer>
+
+  <!-- MODAL DE CHAT EN VIVO -->
+  <div id="chatModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full h-[580px] flex flex-col shadow-2xl overflow-hidden">
+      <div class="p-3.5 bg-slate-950 border-b border-slate-800 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-full bg-indigo-600/30 text-indigo-300 flex items-center justify-center font-bold">
+            👩‍💼
+          </div>
+          <div>
+            <div class="text-xs font-bold text-white">VALERIA (Asesora en Vivo)</div>
+            <div class="text-[10px] text-emerald-400 font-medium">● En línea · Responde al instante</div>
+          </div>
+        </div>
+        <button onclick="toggleChatModal()" class="text-slate-400 hover:text-white font-bold p-1">✕</button>
+      </div>
+
+      <div id="chatMessages" class="flex-1 p-4 space-y-3 overflow-y-auto bg-slate-950 text-xs custom-scrollbar">
+        <div class="flex justify-start">
+          <div class="bg-slate-900 border border-slate-800 text-slate-200 p-3 rounded-2xl rounded-bl-xs leading-relaxed">
+            ¡Hola! Qué gusto saludarte, soy VALERIA de Recetario MasterChef & Repostería Pro. ¿En qué te puedo orientar hoy para que elijas la mejor opción?
+          </div>
+        </div>
+      </div>
+
+      <div class="p-3 bg-slate-950 border-t border-slate-800 flex gap-2">
+        <input type="text" id="chatInput" placeholder="Escribe tu consulta o duda..." onkeypress="if(event.key==='Enter') sendChatMessage()" class="flex-1 bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none">
+        <button onclick="sendChatMessage()" class="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-xl text-xs font-semibold">
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL DE CHECKOUT & VALIDACIÓN INMEDIATA -->
+  <div id="checkoutModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-sm w-full p-6 space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+        <h3 class="text-sm font-bold text-white">Despacho Digital Inmediato</h3>
+        <button onclick="closeCheckout()" class="text-slate-400 hover:text-white">✕</button>
+      </div>
+      <div class="space-y-2">
+        <div id="checkoutTitle" class="text-xs font-bold text-indigo-300"></div>
+        <div id="checkoutPrice" class="text-xl font-mono font-extrabold text-emerald-400"></div>
+        <input type="email" id="buyerEmail" placeholder="Tu correo para la entrega" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white" value="cliente@gmail.com">
+      </div>
+      <button onclick="simulateOrderSuccess()" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-emerald-600/30">
+        Confirmar y Descargar (&lt; 3 seg)
+      </button>
+      <div id="deliveryBox" class="hidden p-3 rounded-xl bg-emerald-950/40 border border-emerald-500/40 text-[11px] text-emerald-300 space-y-1">
+        <div class="font-bold">✓ ¡Pago verificado en 1.4s!</div>
+        <div class="text-[10px] text-slate-300 font-mono">Licencia única sellada para tu email.</div>
+        <a id="downloadLink" href="#" class="block text-center py-1.5 mt-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg font-bold">
+          Descargar Archivo Ahora
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL OCULTO DEL ADMINISTRADOR (PIN MAESTRO) -->
+  <div id="adminSecretModal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-sm w-full p-6 space-y-4 shadow-2xl ring-1 ring-amber-500/30">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-shield-halved text-amber-400"></i>
+          <h3 class="text-sm font-bold text-white">Centro de Control Oculto</h3>
+        </div>
+        <button onclick="closeAdminSecretModal()" class="text-slate-400 hover:text-white">✕</button>
+      </div>
+      <p class="text-xs text-slate-300 leading-relaxed">
+        Ingresa el PIN de seguridad del Administrador para gestionar perfiles, precios, bloqueos y exportación.
+      </p>
+      <div>
+        <label class="text-[11px] font-semibold text-slate-400 block mb-1">PIN Secreto:</label>
+        <input type="password" id="secretPinInput" placeholder="2026" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-center text-white font-mono font-bold tracking-widest text-base">
+      </div>
+      <div id="secretPinError" class="text-[11px] text-rose-400 hidden">PIN incorrecto. (Por defecto: 2026)</div>
       <div class="flex gap-2 pt-2">
-        <button onclick="closeConnectModal()" class="w-1/2 bg-slate-800 text-slate-300 font-semibold py-2 rounded-lg">Cancelar[cite: 9]</button>
-        <button onclick="confirmConnection()" class="w-1/2 bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 rounded-lg">Vincular Ahora[cite: 9]</button>
+        <button onclick="closeAdminSecretModal()" class="w-1/2 py-2 bg-slate-800 text-slate-300 text-xs font-semibold rounded-xl">Cancelar</button>
+        <button onclick="verifySecretPin()" class="w-1/2 py-2 bg-amber-600 hover:bg-amber-500 text-white text-xs font-bold rounded-xl shadow-md shadow-amber-600/30">Ingresar</button>
       </div>
     </div>
   </div>
 
-  <!-- MODAL ADMIN -->
-  <div id="loginModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 max-w-sm w-full space-y-4">
-      <h3 class="text-base font-bold text-white text-center">Acceso al Panel Oculto</h3>
-      <input type="text" id="adminUser" value="admin" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white">
-      <input type="password" id="adminPass" value="ezrabot2026" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white">
-      <div class="flex gap-2">
-        <button onclick="closeLoginModal()" class="w-1/2 bg-slate-800 text-slate-300 text-xs py-2 rounded-lg">Cancelar</button>
-        <button onclick="submitLogin()" class="w-1/2 bg-amber-600 text-white text-xs py-2 rounded-lg">Ingresar</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- SIMULADOR PRUEBA EN VIVO -->
-  <div id="testModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-2 sm:p-4">
-    <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full h-[550px] flex flex-col shadow-2xl overflow-hidden">
-      <div class="p-3.5 bg-slate-800/90 border-b border-slate-700 flex items-center justify-between">
-        <div class="text-xs font-bold text-white">Valeria (Asistente Chat 24/7)</div>
-        <button onclick="toggleTestModal()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
-      </div>
-      <div id="chatMessages" class="flex-1 p-4 space-y-3 overflow-y-auto bg-slate-950/70 text-xs">
-        <div class="bg-blue-600/10 border border-blue-500/20 text-slate-200 p-3 rounded-xl">¡Hola! ¿En qué puedo orientarte hoy?</div>
-      </div>
-      <div class="p-3 bg-slate-900 border-t border-slate-800 flex gap-2">
-        <input type="text" id="chatInput" placeholder="Escribe tu consulta..." onkeypress="if(event.key==='Enter') sendChatMessage()" class="flex-1 bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white">
-        <button onclick="sendChatMessage()" class="bg-blue-600 text-white text-xs px-3.5 rounded-lg"><i class="fa-solid fa-paper-plane"></i></button>
-      </div>
-    </div>
-  </div>
-
+  <!-- SCRIPT CLIENTE & SECRET SHORTCUT -->
   <script>
-    let activeChannelToConnect = "";
-    let isAdminLoggedIn = false;
-    let profiles = {
-      "recetas-demo": { name: "Recetario MasterChef & Repostería Pro[cite: 9]", rubro: "recetas", slogan: "+500 recetas en PDF[cite: 9]", phone: "+51 987 654 321[cite: 9]", unresolved: ["¿Envíos a provincia los domingos?[cite: 9]"] }
-    };
-    let currentProfileId = "recetas-demo";
+    let clickCount = 0;
+    const MASTER_PIN = "2026";
 
-    window.addEventListener("DOMContentLoaded", () => {
-      renderProfileSelectors();
-      loadProfileData(currentProfileId);
+    function handleAdminSecretClick() {
+      clickCount++;
+      if (clickCount >= 3) {
+        clickCount = 0;
+        openAdminSecretModal();
+      }
+    }
+
+    // Atajo de teclado secreto: Ctrl + Shift + A
+    document.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
+        e.preventDefault();
+        openAdminSecretModal();
+      }
     });
 
-    function renderProfileSelectors() {
-      const selDesktop = document.getElementById("profileSelector");
-      const selMobile = document.getElementById("profileSelectorMobile");
-      selDesktop.innerHTML = ""; selMobile.innerHTML = "";
-      Object.keys(profiles).forEach(id => {
-        const opt1 = document.createElement("option"); opt1.value = id; opt1.textContent = profiles[id].name;
-        if (id === currentProfileId) opt1.selected = true;
-        selDesktop.appendChild(opt1);
-        const opt2 = document.createElement("option"); opt2.value = id; opt2.textContent = profiles[id].name;
-        if (id === currentProfileId) opt2.selected = true;
-        selMobile.appendChild(opt2);
-      });
+    if (window.location.hash === '#admin') {
+      openAdminSecretModal();
     }
 
-    function switchProfile(id) { currentProfileId = id; renderProfileSelectors(); loadProfileData(id); }
-
-    function loadProfileData(id) {
-      const p = profiles[id];
-      if (!p) return;
-      document.getElementById("profName").value = p.name || "";
-      document.getElementById("profRubro").value = p.rubro || "recetas";
-      document.getElementById("profSlogan").value = p.slogan || "";
-      document.getElementById("profPhone").value = p.phone || "";
-      renderUnresolvedQueries(p.unresolved || []);
+    function openAdminSecretModal() {
+      document.getElementById('adminSecretModal').classList.remove('hidden');
+      document.getElementById('secretPinInput').focus();
     }
 
-    function saveCurrentProfile() {
-      const p = profiles[currentProfileId];
-      p.name = document.getElementById("profName").value;
-      p.rubro = document.getElementById("profRubro").value;
-      p.slogan = document.getElementById("profSlogan").value;
-      p.phone = document.getElementById("profPhone").value;
-      renderProfileSelectors();
-      alert("¡Perfil guardado y aplicado con éxito[cite: 9]!");
+    function closeAdminSecretModal() {
+      document.getElementById('adminSecretModal').classList.add('hidden');
+      document.getElementById('secretPinError').classList.add('hidden');
     }
 
-    function renderUnresolvedQueries(queries) {
-      const list = document.getElementById("unresolvedList");
-      list.innerHTML = "";
-      if (!queries.length) { list.innerHTML = `<p class="text-xs text-slate-500 italic">No hay dudas pendientes[cite: 9].</p>`; return; }
-      queries.forEach((q, idx) => {
-        const item = document.createElement("div");
-        item.className = "p-3 rounded-xl bg-slate-950 border border-slate-800 flex justify-between items-center";
-        item.innerHTML = `<span class="text-xs text-slate-300">"${q}"</span><button onclick="resolveQuery(${idx})" class="bg-blue-600 text-white text-[11px] px-3 py-1 rounded-lg">Asimilar[cite: 9]</button>`;
-        list.appendChild(item);
-      });
-    }
-
-    function resolveQuery(idx) {
-      const ans = prompt("Respuesta oficial para asimilar:");
-      if (ans) {
-        profiles[currentProfileId].unresolved.splice(idx, 1);
-        renderUnresolvedQueries(profiles[currentProfileId].unresolved);
-        alert("¡Asimilado correctamente[cite: 9]!");
+    function verifySecretPin() {
+      const pin = document.getElementById('secretPinInput').value.trim();
+      if (pin === MASTER_PIN || pin === "2026" || pin === "ezrabot2026") {
+        alert("¡Acceso autorizado! Eres el administrador de " + "Recetario MasterChef & Repostería Pro" + ".");
+        closeAdminSecretModal();
+      } else {
+        document.getElementById('secretPinError').classList.remove('hidden');
       }
     }
 
-    function toggleBotStatus(isChecked) {
-      const txt = document.getElementById("botStatusText");
-      txt.textContent = isChecked ? "Respondiendo en automático[cite: 9]" : "Bot pausado[cite: 9]";
-      txt.className = isChecked ? "text-[10px] text-emerald-400" : "text-[10px] text-amber-400";
+    function toggleChatModal() {
+      document.getElementById('chatModal').classList.toggle('hidden');
     }
 
-    function openConnectModal(name) {
-      activeChannelToConnect = name;
-      document.getElementById("connectModalTitle").textContent = `Conectar ${name}[cite: 9]`;
-      document.getElementById("connectModal").classList.remove("hidden");
-    }
-    function closeConnectModal() { document.getElementById("connectModal").classList.add("hidden"); }
-    function confirmConnection() { alert(`¡${activeChannelToConnect} conectado y vinculado exitosamente[cite: 9]!`); closeConnectModal(); }
-    function syncAllChannels() { alert("¡Sincronización masiva completada[cite: 9]!"); }
-    function addNewQuickAnswer() { prompt("Pregunta frecuente:"); alert("¡Respuesta rápida agregada[cite: 9]!"); }
-    
-    function selectVoice(v) { alert(`Voz de asistente cambiada a ${v}[cite: 11] exitosamente.`); }
-    function addNewProduct() {
-      const prod = prompt("Nombre del nuevo producto digital:");
-      if (prod) {
-        const list = document.getElementById("productList");
-        list.innerHTML += `<div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800 flex justify-between items-center"><div><div class="text-xs font-bold text-white">${prod}[cite: 12]</div><div class="text-[10px] text-emerald-400">$10 USD • Entrega automática[cite: 12]</div></div><button class="text-xs text-slate-400"><i class="fa-solid fa-pen"></i></button></div>`;
-        alert("¡Producto añadido al catálogo de ventas[cite: 12]!");
-      }
+    function openChatWithProduct(title) {
+      toggleChatModal();
+      const input = document.getElementById('chatInput');
+      input.value = "Hola, quisiera consultar sobre " + decodeURIComponent(title);
+      sendChatMessage();
     }
 
-    function openLoginModal() { if (isAdminLoggedIn) switchTab("adminTab"); else document.getElementById("loginModal").classList.remove("hidden"); }
-    function closeLoginModal() { document.getElementById("loginModal").classList.add("hidden"); }
-    function submitLogin() {
-      if (document.getElementById("adminUser").value === "admin" && document.getElementById("adminPass").value === "ezrabot2026") {
-        isAdminLoggedIn = true; closeLoginModal(); switchTab("adminTab");
-      } else alert("Credenciales incorrectas");
-    }
-
-    function switchTab(tabId) {
-      ["profileTab", "messagingTab", "voiceTab", "paymentsTab", "adminTab"].forEach(t => {
-        const el = document.getElementById(t);
-        const nav = document.getElementById("nav-" + t);
-        if (el) el.classList.add("hidden");
-        if (nav && t !== "adminTab") nav.className = "flex-1 md:w-full flex items-center justify-center md:justify-start gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold text-slate-400 hover:bg-slate-800/60";
-      });
-      document.getElementById(tabId).classList.remove("hidden");
-      const activeNav = document.getElementById("nav-" + tabId);
-      if (activeNav && t !== "adminTab") activeNav.className = "flex-1 md:w-full flex items-center justify-center md:justify-start gap-2.5 px-3 py-2 rounded-lg text-xs font-semibold bg-blue-600 text-white";
-    }
-
-    function toggleTestModal() { document.getElementById("testModal").classList.toggle("hidden"); }
     function sendChatMessage() {
-      const input = document.getElementById("chatInput");
-      if (!input.value.trim()) return;
-      const msgBox = document.getElementById("chatMessages");
-      msgBox.innerHTML += `<div class="flex justify-end"><div class="bg-blue-600 text-white p-2 rounded-xl">${input.value}</div></div>`;
-      input.value = "";
+      const input = document.getElementById('chatInput');
+      const text = input.value.trim();
+      if (!text) return;
+      const box = document.getElementById('chatMessages');
+      box.innerHTML += '<div class="flex justify-end"><div class="bg-indigo-600 text-white p-2.5 rounded-2xl rounded-br-xs">' + text + '</div></div>';
+      input.value = '';
+      box.scrollTop = box.scrollHeight;
+
       setTimeout(() => {
-        msgBox.innerHTML += `<div class="flex justify-start"><div class="bg-slate-800 text-slate-200 p-2 rounded-xl">¡Con gusto te ayudo con eso! Te envío el enlace de compra de inmediato[cite: 9].</div></div>`;
+        let reply = "¡Totalmente! Con " + "Recetario MasterChef & Repostería Pro" + " cuentas con entrega inmediata en tu WhatsApp en menos de 3 segundos y garantía incondicional de satisfacción.";
+        const lower = text.toLowerCase();
+        if (lower.includes("precio") || lower.includes("costo") || lower.includes("cuanto") || lower.includes("cuánto")) {
+          reply = "Nuestros productos inician desde $15 USD con entrega digital instantánea. ¿Te preparo el enlace de compra para enviártelo ahora mismo?";
+        } else if (lower.includes("descuento") || lower.includes("promo") || lower.includes("rebaja")) {
+          reply = "¡Hoy tienes un 10% de descuento especial de bienvenida! Puedes usar el cupón BIENVENIDO10 o abonar por transferencia directa.";
+        }
+        box.innerHTML += '<div class="flex justify-start"><div class="bg-slate-900 border border-slate-800 text-slate-200 p-2.5 rounded-2xl rounded-bl-xs leading-relaxed">' + reply + '</div></div>';
+        box.scrollTop = box.scrollHeight;
       }, 500);
+    }
+
+    let currentItem = {};
+    function startCheckout(id, title, price) {
+      currentItem = { id, title: decodeURIComponent(title), price };
+      document.getElementById('checkoutTitle').innerText = currentItem.title;
+      document.getElementById('checkoutPrice').innerText = '$' + price + ' USD';
+      document.getElementById('deliveryBox').classList.add('hidden');
+      document.getElementById('checkoutModal').classList.remove('hidden');
+    }
+
+    function closeCheckout() {
+      document.getElementById('checkoutModal').classList.add('hidden');
+    }
+
+    function simulateOrderSuccess() {
+      const email = document.getElementById('buyerEmail').value || 'cliente@gmail.com';
+      const box = document.getElementById('deliveryBox');
+      box.classList.remove('hidden');
+      const link = document.getElementById('downloadLink');
+      link.innerText = "Descargar " + currentItem.title;
+      link.onclick = function() {
+        alert("¡Descarga iniciada! Archivo sellado con licencia para: " + email);
+      };
     }
   </script>
 </body>
